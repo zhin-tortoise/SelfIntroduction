@@ -1,0 +1,14 @@
+{
+    "production" : {
+        "host" : "mysql1.php.xdomain.ne.jp",
+        "name" : "back_project",
+        "user" : "back_user",
+        "password" : "syp4sDA0J"
+    },
+    "develop" : {
+        "host" : "localhost",
+        "name" : "project",
+        "user" : "root",
+        "password" : "password"
+    }
+}
