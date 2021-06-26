@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Mysqlへの接続を管理するクラス
+ * Mysqlへの接続を管理するクラス。
  */
 
 class Mysql
@@ -9,7 +9,7 @@ class Mysql
     // const ENVIRONMENT = 'production';
     const ENVIRONMENT = 'develop';
     private string $mysqlEnvironmentFilePath;
-    private $pdo;
+    private PDO $pdo;
 
     /**
      * コンストラクタでPDOの作成を行う。
@@ -23,9 +23,9 @@ class Mysql
 
     /**
      * PDOのゲッター。
-     * @return PDO pdo。
+     * @return PDO 接続が確立されたpdoクラス。
      */
-    public function getPdo()
+    public function getPdo(): PDO
     {
         return $this->pdo;
     }

@@ -2,5 +2,5 @@
 
 interface IUserRepository
 {
-    public function create(UserEntity $userEntity);
+    public function create(UserEntity $userEntity): string;
 }

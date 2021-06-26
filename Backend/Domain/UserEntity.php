@@ -39,7 +39,7 @@ class UserEntity
      * ユーザーIDのゲッター。
      * @return int ユーザーID。
      */
-    public function getID()
+    public function getID(): int
     {
         return $this->id;
     }
@@ -48,7 +48,7 @@ class UserEntity
      * ユーザー名のゲッター。
      * @return string ユーザー名。
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -57,7 +57,7 @@ class UserEntity
      * メールアドレスのゲッター。
      * @return string メールアドレス。
      */
-    public function getMail()
+    public function getMail(): string
     {
         return $this->mail;
     }
@@ -66,7 +66,7 @@ class UserEntity
      * パスワードのゲッター。
      * @return string パスワード。
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -75,7 +75,7 @@ class UserEntity
      * 写真のゲッター。
      * @return string 写真。
      */
-    public function getPicture()
+    public function getPicture(): string
     {
         return $this->picture;
     }
@@ -84,7 +84,7 @@ class UserEntity
      * 誕生日のゲッター。
      * @return string 誕生日。
      */
-    public function getBirthday()
+    public function getBirthday(): string
     {
         return $this->birthday;
     }
@@ -93,7 +93,7 @@ class UserEntity
      * 性別のゲッター。
      * @return string 性別。
      */
-    public function getGender()
+    public function getGender(): string
     {
         return $this->gender;
     }
@@ -102,7 +102,7 @@ class UserEntity
      * 経歴のゲッター。
      * @return string 経歴。
      */
-    public function getBackground()
+    public function getBackground(): string
     {
         return $this->background;
     }
@@ -111,7 +111,7 @@ class UserEntity
      * 資格のゲッター。
      * @return string 資格。
      */
-    public function getQualification()
+    public function getQualification(): string
     {
         return $this->qualification;
     }
@@ -120,7 +120,7 @@ class UserEntity
      * プロフィールのゲッター。
      * @return string プロフィール。
      */
-    public function getProfile()
+    public function getProfile(): string
     {
         return $this->profile;
     }

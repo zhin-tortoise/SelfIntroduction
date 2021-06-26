@@ -11,12 +11,20 @@ class UserRepository implements IUserRepository
 {
     private PDO $pdo;
 
+    /**
+     * コンストラクタでPDOを設定する。
+     */
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }
 
-    public function create(UserEntity $userEntity)
+    /**
+     * ユーザーエンティティを引数から取得し、そのユーザーをDBに登録する。
+     * @param UserEntity $userEntity 登録するユーザー。
+     * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
+     */
+    public function create(UserEntity $userEntity): string
     {
         $sql = 'insert into user values ( ';
         $sql .= ':id, :name, :mail, :password, :picture, :birthday, :gender, :background, :qualification, :profile';
