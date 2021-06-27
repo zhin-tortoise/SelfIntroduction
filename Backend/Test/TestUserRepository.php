@@ -52,4 +52,17 @@ class TestUserRepository extends TestCase
 
         $this->assertSame($errorCode, '00000');
     }
+
+    /**
+     * ユーザーエンティティをDBから削除する。
+     */
+    public function testUserRepositoryDeleteUserEntity()
+    {
+        $mysql = new Mysql();
+        $userEntity = new UserEntity($this->user);
+        $userRepository = new UserRepository($mysql->getPdo());
+        $errorCode = $userRepository->delete($userEntity);
+
+        $this->assertSame($errorCode, '00000');
+    }
 }
