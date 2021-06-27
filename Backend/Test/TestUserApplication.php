@@ -55,7 +55,7 @@ class TestUserApplication extends TestCase
     /**
      * ユーザーを削除する。
      */
-    public function testDeleteUser()
+    public function testDeleteUser(): void
     {
         $userApplication = new UserApplication();
         $errorCode = $userApplication->delete($this->user);

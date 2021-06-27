@@ -21,9 +21,9 @@ class UserApplication
         $mysql = new Mysql();
         $userRepository = new UserRepository($mysql->getPdo());
         $userEntity = new UserEntity($user);
-        $error_code = $userRepository->create($userEntity);
+        $errorCode = $userRepository->create($userEntity);
 
-        return $error_code;
+        return $errorCode;
     }
 
     /**

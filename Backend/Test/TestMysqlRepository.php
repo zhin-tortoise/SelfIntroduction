@@ -13,7 +13,7 @@ class TestMysqlRepository extends TestCase
     /**
      * PDOを取得する。
      */
-    public function testGetPDO()
+    public function testGetPDO(): void
     {
         $filePath = dirname(__FILE__) . '/../Repository/Mysql.json';
         $environment = json_decode(file_get_contents($filePath), true)['develop'];

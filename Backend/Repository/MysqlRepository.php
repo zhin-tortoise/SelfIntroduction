@@ -6,18 +6,17 @@
 
 class Mysql
 {
-    // const ENVIRONMENT = 'production';
-    const ENVIRONMENT = 'develop';
-    private string $mysqlEnvironmentFilePath;
-    private PDO $pdo;
+    // const ENVIRONMENT = 'production'; // 商用環境で使用する際に使用する変数。
+    const ENVIRONMENT = 'develop'; // 開発環境で使用する際に使用する変数。
+    private PDO $pdo; // DBアクセスを行うPDOクラス。
 
     /**
      * コンストラクタでPDOの作成を行う。
      */
     public function __construct()
     {
-        $this->mysqlEnvironmentFilePath = dirname(__FILE__) . '/Mysql.json';
-        $environment = json_decode(file_get_contents($this->mysqlEnvironmentFilePath), true)[self::ENVIRONMENT];
+        $environmentFile = dirname(__FILE__) . '/Mysql.json';
+        $environment = json_decode(file_get_contents($environmentFile), true)[self::ENVIRONMENT];
         $this->pdo = new PDO("mysql:dbname=$environment[name];host=$environment[host];", $environment['user'], $environment['password']);
     }
 
