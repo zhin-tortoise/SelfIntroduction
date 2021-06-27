@@ -60,7 +60,12 @@ class UserRepository implements IUserRepository
         $sql = 'delete from user where id = :id;';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $userEntity->getID());
-        $stmt->execute();
+
+        try {
+            $stmt->execute();
+        } catch (Exception $e) {
+            return $e->getCode();
+        }
 
         return $stmt->errorCode();
     }

@@ -43,26 +43,47 @@ class TestUserRepository extends TestCase
     /**
      * ユーザーエンティティを作成し、DBに登録する。
      */
-    public function testUserRepositoryCreateUserEntity(): void
+    public function testCreateUser(): void
     {
         $mysql = new Mysql();
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
-        $errorCode = $userRepository->create($userEntity);
 
+        $errorCode = $userRepository->create($userEntity);
         $this->assertSame($errorCode, '00000');
+
+        $userRepository->delete($userEntity);
+    }
+
+    /**
+     * 同一のIDのユーザーエンティティを複数作成し、DBに登録する。
+     */
+    public function testCreateSameIDUser(): void
+    {
+        $mysql = new Mysql();
+        $userEntity = new UserEntity($this->user);
+        $userRepository = new UserRepository($mysql->getPdo());
+
+        $errorCode = $userRepository->create($userEntity);
+        $this->assertSame($errorCode, '00000');
+
+        $errorCode = $userRepository->create($userEntity);
+        $this->assertSame($errorCode, '23000');
+
+        $userRepository->delete($userEntity);
     }
 
     /**
      * ユーザーエンティティをDBから削除する。
      */
-    public function testUserRepositoryDeleteUserEntity(): void
+    public function testDeleteUser(): void
     {
         $mysql = new Mysql();
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
-        $errorCode = $userRepository->delete($userEntity);
 
+        $userRepository->create($userEntity);
+        $errorCode = $userRepository->delete($userEntity);
         $this->assertSame($errorCode, '00000');
     }
 }
