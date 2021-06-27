@@ -49,4 +49,17 @@ class UserRepository implements IUserRepository
 
         return $stmt->errorCode();
     }
+
+    /**
+     * ユーザーエンティティを引数から取得し、そのユーザーをDBから削除する。
+     */
+    public function delete(UserEntity $userEntity): string
+    {
+        $sql = 'delete from user where id = :id;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $userEntity->getID());
+        $stmt->execute();
+
+        return $stmt->errorCode();
+    }
 }

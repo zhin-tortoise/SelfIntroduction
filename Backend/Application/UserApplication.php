@@ -25,4 +25,19 @@ class UserApplication
 
         return $error_code;
     }
+
+    /**
+     * ユーザーを削除する。
+     * @param array $user ユーザーの配列。
+     * @return string エラーコード。
+     */
+    public function delete(array $user): string
+    {
+        $mysql = new Mysql();
+        $userRepository = new UserRepository($mysql->getPdo());
+        $userEntity = new UserEntity($user);
+        $errorCode = $userRepository->delete($userEntity);
+
+        return $errorCode;
+    }
 }
