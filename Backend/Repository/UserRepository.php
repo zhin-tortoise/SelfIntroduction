@@ -9,7 +9,7 @@ require_once(dirname(__FILE__) . '/IUserRepository.php');
 
 class UserRepository implements IUserRepository
 {
-    private PDO $pdo;
+    private PDO $pdo; // DBアクセスを行うPDOクラス。
 
     /**
      * コンストラクタでPDOを設定する。
@@ -52,6 +52,8 @@ class UserRepository implements IUserRepository
 
     /**
      * ユーザーエンティティを引数から取得し、そのユーザーをDBから削除する。
+     * @param UserEntity $userEntity 削除するユーザー。
+     * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
      */
     public function delete(UserEntity $userEntity): string
     {

@@ -14,7 +14,7 @@ class TestUserEntity extends TestCase
     /**
      * ユーザーエンティティを作成する。
      */
-    public function testCreateUserEntity()
+    public function testCreateUserEntity(): void
     {
         $id = 1;
         $name = 'test_user';

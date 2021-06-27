@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * ユーザーリポジトリのインターフェース。
+ */
+
 interface IUserRepository
 {
     public function create(UserEntity $userEntity): string;

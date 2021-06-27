@@ -43,7 +43,7 @@ class TestUserRepository extends TestCase
     /**
      * ユーザーエンティティを作成し、DBに登録する。
      */
-    public function testUserRepositoryCreateUserEntity()
+    public function testUserRepositoryCreateUserEntity(): void
     {
         $mysql = new Mysql();
         $userEntity = new UserEntity($this->user);
@@ -56,7 +56,7 @@ class TestUserRepository extends TestCase
     /**
      * ユーザーエンティティをDBから削除する。
      */
-    public function testUserRepositoryDeleteUserEntity()
+    public function testUserRepositoryDeleteUserEntity(): void
     {
         $mysql = new Mysql();
         $userEntity = new UserEntity($this->user);
