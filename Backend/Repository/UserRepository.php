@@ -107,6 +107,45 @@ class UserRepository implements IUserRepository
     }
 
     /**
+     * ユーザーエンティティを引数から取得し、そのユーザーをDBに更新する。
+     * @param UserEntity $userEntity 更新するユーザー。
+     * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
+     */
+    public function updateUser(UserEntity $userEntity): string
+    {
+        if (
+            $this->readUserFromMail($userEntity->getMail())
+            && $userEntity->getID() !== $this->readUserFromMail($userEntity->getMail())->getID()
+        ) {
+            return self::EXISTS_MAIL_CODE;
+        }
+
+        $sql = 'update user set name = :name, mail = :mail, password = :password, ';
+        $sql .= 'picture = :picture, birthday = :birthday, gender = :gender, ';
+        $sql .= 'background = :background, qualification = :qualification, profile = :profile ';
+        $sql .= 'where id = :id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $userEntity->getID());
+        $stmt->bindValue(':name', $userEntity->getName());
+        $stmt->bindValue(':mail', $userEntity->getMail());
+        $stmt->bindValue(':password', $userEntity->getPassword());
+        $stmt->bindValue(':picture', $userEntity->getPicture());
+        $stmt->bindValue(':birthday', $userEntity->getBirthday());
+        $stmt->bindValue(':gender', $userEntity->getGender());
+        $stmt->bindValue(':background', $userEntity->getBackground());
+        $stmt->bindValue(':qualification', $userEntity->getQualification());
+        $stmt->bindValue(':profile', $userEntity->getProfile());
+
+        try {
+            $stmt->execute();
+        } catch (Exception $e) {
+            return $e->getCode();
+        }
+
+        return $stmt->errorCode();
+    }
+
+    /**
      * ユーザーエンティティを引数から取得し、そのユーザーをDBから削除する。
      * @param UserEntity $userEntity 削除するユーザー。
      * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。

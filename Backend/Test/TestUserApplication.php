@@ -132,6 +132,29 @@ class TestUserApplication extends TestCase
     }
 
     /**
+     * ユーザーを更新する。
+     */
+    public function testUpdateUser(): void
+    {
+        $userApplication = new UserApplication();
+        $userApplication->createUser($this->user);
+
+        $user = $this->user;
+        $user['name'] = 'updateUser';
+        $user['mail'] = 'updateUser@gmail.com';
+        $user['password'] = '$2a$08$NDL7bvS5llgksICHNQEmneCi68hw4hW320tXZMfFbG3F9YXL6yQPi';
+        $user['picture'] = 'update.jpg';
+        $user['birthday'] = '2021/06/29';
+        $user['gender'] = '女';
+        $user['background'] = '更新用の経歴。';
+        $user['qualification'] = '更新用の資格。';
+        $user['profile'] = '更新用のプロフィール。';
+        $errorCode = $userApplication->updateUser($user);
+
+        $this->assertSame($errorCode, '00000');
+    }
+
+    /**
      * ユーザーを削除する。
      */
     public function testDeleteUser(): void
