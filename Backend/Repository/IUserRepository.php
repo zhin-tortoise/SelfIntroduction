@@ -6,6 +6,6 @@
 
 interface IUserRepository
 {
-    public function create(UserEntity $userEntity): string;
-    public function delete(UserEntity $userEntity): string;
+    public function createUser(UserEntity $userEntity): string;
+    public function deleteUser(UserEntity $userEntity): string;
 }

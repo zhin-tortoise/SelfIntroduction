@@ -21,7 +21,7 @@ class UserApplication
         $mysql = new Mysql();
         $userRepository = new UserRepository($mysql->getPdo());
         $userEntity = new UserEntity($user);
-        $errorCode = $userRepository->create($userEntity);
+        $errorCode = $userRepository->createUser($userEntity);
 
         return $errorCode;
     }
@@ -90,7 +90,7 @@ class UserApplication
         $mysql = new Mysql();
         $userRepository = new UserRepository($mysql->getPdo());
         $userEntity = new UserEntity($user);
-        $errorCode = $userRepository->delete($userEntity);
+        $errorCode = $userRepository->deleteUser($userEntity);
 
         return $errorCode;
     }
