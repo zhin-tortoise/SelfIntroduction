@@ -49,11 +49,11 @@ class TestUserApplication extends TestCase
     public function testCreateUser(): void
     {
         $userApplication = new UserApplication();
-        $errorCode = $userApplication->create($this->user);
+        $errorCode = $userApplication->createUser($this->user);
 
         $this->assertSame($errorCode, '00000');
 
-        $userApplication->delete($this->user);
+        $userApplication->deleteUser($this->user);
     }
 
     /**
@@ -62,7 +62,7 @@ class TestUserApplication extends TestCase
     public function testCreateEmptyUser(): void
     {
         $userApplication = new UserApplication();
-        $errorCode = $userApplication->create([]);
+        $errorCode = $userApplication->createUser([]);
 
         $this->assertSame($errorCode, '00000');
 
@@ -81,12 +81,12 @@ class TestUserApplication extends TestCase
         $user['password'] = 'password';
 
         $userApplication = new UserApplication();
-        $userApplication->create($user);
+        $userApplication->createUser($user);
 
-        $userEntity = $userApplication->readFromID($user['id']);
+        $userEntity = $userApplication->readUserFromID($user['id']);
         $this->assertTrue(password_verify('password', $userEntity->getPassword()));
 
-        $userApplication->delete($this->user);
+        $userApplication->deleteUser($this->user);
     }
 
     /**
@@ -95,12 +95,12 @@ class TestUserApplication extends TestCase
     public function testReadUserFromID(): void
     {
         $userApplication = new UserApplication();
-        $userApplication->create($this->user);
-        $userEntity = $userApplication->readFromID($this->user['id']);
+        $userApplication->createUser($this->user);
+        $userEntity = $userApplication->readUserFromID($this->user['id']);
 
         $this->assertSame($userEntity->getID(), (string)$this->user['id']);
 
-        $userApplication->delete($this->user);
+        $userApplication->deleteUser($this->user);
     }
 
     /**
@@ -109,12 +109,12 @@ class TestUserApplication extends TestCase
     public function testReadUserFromMail(): void
     {
         $userApplication = new UserApplication();
-        $userApplication->create($this->user);
-        $userEntity = $userApplication->readFromMail($this->user['mail']);
+        $userApplication->createUser($this->user);
+        $userEntity = $userApplication->readUserFromMail($this->user['mail']);
 
         $this->assertSame($userEntity->getID(), (string)$this->user['id']);
 
-        $userApplication->delete($this->user);
+        $userApplication->deleteUser($this->user);
     }
 
     /**
@@ -123,12 +123,12 @@ class TestUserApplication extends TestCase
     public function testReadAllUser(): void
     {
         $userApplication = new UserApplication();
-        $userApplication->create($this->user);
-        $userEntities = $userApplication->readAll();
+        $userApplication->createUser($this->user);
+        $userEntities = $userApplication->readAllUser();
 
         $this->assertFalse(empty($userEntities));
 
-        $userApplication->delete($this->user);
+        $userApplication->deleteUser($this->user);
     }
 
     /**
@@ -137,8 +137,8 @@ class TestUserApplication extends TestCase
     public function testDeleteUser(): void
     {
         $userApplication = new UserApplication();
-        $userApplication->create($this->user);
-        $errorCode = $userApplication->delete($this->user);
+        $userApplication->createUser($this->user);
+        $errorCode = $userApplication->deleteUser($this->user);
 
         $this->assertSame($errorCode, '00000');
     }
