@@ -16,7 +16,7 @@ class UserApplication
      * @param array $user ユーザーの配列。
      * @return string エラーコード。
      */
-    public function create(array $user): string
+    public function createUser(array $user): string
     {
         $mysql = new Mysql();
         $userRepository = new UserRepository($mysql->getPdo());
@@ -32,7 +32,7 @@ class UserApplication
      * @return UserEntity | false 引数で与えられたIDに紐づくユーザーエンティティ。
      *                            存在しないメールアドレスの場合は、falseが返る。
      */
-    public function readFromID(int $id)
+    public function readUserFromID(int $id)
     {
         $mysql = new Mysql();
         $userRepository = new UserRepository($mysql->getPdo());
@@ -46,7 +46,7 @@ class UserApplication
      * @return UserEntity | false 引数で与えられたメールアドレスに紐づくユーザーエンティティ。
      *                            存在しないメールアドレスの場合は、falseが返る。
      */
-    public function readFromMail(string $mail)
+    public function readUserFromMail(string $mail)
     {
         $mysql = new Mysql();
         $userRepository = new UserRepository($mysql->getPdo());
@@ -58,7 +58,7 @@ class UserApplication
      * 全てのユーザーを取得する。
      * @return array DBに登録されている全てのユーザー。
      */
-    public function readAll(): array
+    public function readAllUser(): array
     {
         $mysql = new Mysql();
         $userRepository = new UserRepository($mysql->getPdo());
@@ -71,7 +71,7 @@ class UserApplication
      * @param array $user ユーザーの配列。
      * @return string エラーコード。
      */
-    public function delete(array $user): string
+    public function deleteUser(array $user): string
     {
         $mysql = new Mysql();
         $userRepository = new UserRepository($mysql->getPdo());
