@@ -6,9 +6,11 @@
  */
 
 require_once(dirname(__FILE__) . '/IUserRepository.php');
+require_once(dirname(__FILE__) . '/../domain/UserEntity.php');
 
 class UserRepository implements IUserRepository
 {
+    const EXISTS_MAIL_CODE = '99998';
     private PDO $pdo; // DBアクセスを行うPDOクラス。
 
     /**
@@ -26,6 +28,10 @@ class UserRepository implements IUserRepository
      */
     public function create(UserEntity $userEntity): string
     {
+        if ($this->readUserFromMail($userEntity->getMail())) {
+            return self::EXISTS_MAIL_CODE;
+        }
+
         $sql = 'insert into user values ( ';
         $sql .= ':id, :name, :mail, :password, :picture, :birthday, :gender, :background, :qualification, :profile';
         $sql .= ');';
@@ -51,6 +57,22 @@ class UserRepository implements IUserRepository
     }
 
     /**
+     * メールアドレスを引数から取得し、そのメールアドレスからユーザーを読み取り、ユーザーエンティティを返す。
+     * @param string $mail ユーザーのメールアドレス。
+     * @return UserEntity | false 引数で与えられたメールアドレスに紐づくユーザーエンティティ。
+     *                            存在しないメールアドレスの場合は、falseが返る。
+     */
+    public function readUserFromMail(string $mail)
+    {
+        $sql = 'select * from user where mail = :mail;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':mail', $mail);
+        $stmt->execute();
+
+        return $stmt->rowCount() ? new UserEntity($stmt->fetch()) : false;
+    }
+
+    /**
      * ユーザーエンティティを引数から取得し、そのユーザーをDBから削除する。
      * @param UserEntity $userEntity 削除するユーザー。
      * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
@@ -60,6 +82,24 @@ class UserRepository implements IUserRepository
         $sql = 'delete from user where id = :id;';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $userEntity->getID());
+
+        try {
+            $stmt->execute();
+        } catch (Exception $e) {
+            return $e->getCode();
+        }
+
+        return $stmt->errorCode();
+    }
+
+    /**
+     * IDが最大のユーザーを削除する。
+     * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
+     */
+    public function deleteMaxIDUser()
+    {
+        $sql = 'delete from user order by id desc limit 1;';
+        $stmt = $this->pdo->prepare($sql);
 
         try {
             $stmt->execute();
