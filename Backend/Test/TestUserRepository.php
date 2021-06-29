@@ -52,10 +52,10 @@ class TestUserRepository extends TestCase
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
 
-        $errorCode = $userRepository->create($userEntity);
+        $errorCode = $userRepository->createUser($userEntity);
         $this->assertSame($errorCode, '00000');
 
-        $userRepository->delete($userEntity);
+        $userRepository->deleteUser($userEntity);
     }
 
     /**
@@ -67,17 +67,17 @@ class TestUserRepository extends TestCase
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
 
-        $errorCode = $userRepository->create($userEntity);
+        $errorCode = $userRepository->createUser($userEntity);
         $this->assertSame($errorCode, '00000');
 
         $sameIDUser = $this->user;
         $sameIDUser['mail'] = 'sameIDUser@gmail.com'; // 同一のメールアドレスだと弾かれるため変更する。
         $sameIDUserEntity = new UserEntity($sameIDUser);
 
-        $errorCode = $userRepository->create($sameIDUserEntity);
+        $errorCode = $userRepository->createUser($sameIDUserEntity);
         $this->assertSame($errorCode, '23000');
 
-        $userRepository->delete($userEntity);
+        $userRepository->deleteUser($userEntity);
     }
 
     /**
@@ -92,7 +92,7 @@ class TestUserRepository extends TestCase
         $userEntity = new UserEntity($user);
         $userRepository = new UserRepository($mysql->getPdo());
 
-        $errorCode = $userRepository->create($userEntity);
+        $errorCode = $userRepository->createUser($userEntity);
         $this->assertSame($errorCode, '00000');
 
         $userRepository->deleteMaxIDUser();
@@ -107,13 +107,13 @@ class TestUserRepository extends TestCase
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
 
-        $errorCode = $userRepository->create($userEntity);
+        $errorCode = $userRepository->createUser($userEntity);
         $this->assertSame($errorCode, '00000');
 
-        $errorCode = $userRepository->create($userEntity);
+        $errorCode = $userRepository->createUser($userEntity);
         $this->assertSame($errorCode, '99998');
 
-        $userRepository->delete($userEntity);
+        $userRepository->deleteUser($userEntity);
     }
 
     /**
@@ -125,12 +125,12 @@ class TestUserRepository extends TestCase
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
 
-        $userRepository->create($userEntity);
+        $userRepository->createUser($userEntity);
         $dbUserEntity = $userRepository->readUserFromID($this->user['id']);
 
         $this->assertSame($dbUserEntity->getID(), (string)$this->user['id']);
 
-        $userRepository->delete($userEntity);
+        $userRepository->deleteUser($userEntity);
     }
 
     /**
@@ -142,12 +142,12 @@ class TestUserRepository extends TestCase
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
 
-        $userRepository->create($userEntity);
+        $userRepository->createUser($userEntity);
         $dbUserEntity = $userRepository->readUserFromMail($this->user['mail']);
 
         $this->assertSame($dbUserEntity->getID(), (string)$this->user['id']);
 
-        $userRepository->delete($userEntity);
+        $userRepository->deleteUser($userEntity);
     }
 
     /**
@@ -159,12 +159,12 @@ class TestUserRepository extends TestCase
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
 
-        $userRepository->create($userEntity);
+        $userRepository->createUser($userEntity);
         $userEntities = $userRepository->readAllUser();
 
         $this->assertFalse(empty($userEntities));
 
-        $userRepository->delete($userEntity);
+        $userRepository->deleteUser($userEntity);
     }
 
     /**
@@ -176,7 +176,7 @@ class TestUserRepository extends TestCase
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
 
-        $userRepository->create($userEntity);
+        $userRepository->createUser($userEntity);
 
         $user = $this->user;
         $user['name'] = 'updateUser';
@@ -204,7 +204,7 @@ class TestUserRepository extends TestCase
         $this->assertSame($dbUpdateUserEntity->getQualification(), $user['qualification']);
         $this->assertSame($dbUpdateUserEntity->getProfile(), $user['profile']);
 
-        $userRepository->delete($dbUpdateUserEntity);
+        $userRepository->deleteUser($dbUpdateUserEntity);
     }
 
     /**
@@ -216,7 +216,7 @@ class TestUserRepository extends TestCase
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
 
-        $userRepository->create($userEntity);
+        $userRepository->createUser($userEntity);
 
         $updateUser = $this->user;
         $updateUser['id'] = 0;
@@ -237,13 +237,13 @@ class TestUserRepository extends TestCase
 
         $firstUser = $this->user;
         $firstUserEntity = new UserEntity($firstUser);
-        $userRepository->create($firstUserEntity);
+        $userRepository->createUser($firstUserEntity);
 
         $secondUser = $this->user;
         $secondUser['id'] = $secondUser['id'] + 1;
         $secondUser['mail'] = 'second@gmail.com';
         $secondUserEntity = new UserEntity($secondUser);
-        $userRepository->create($secondUserEntity);
+        $userRepository->createUser($secondUserEntity);
 
         $firstUser['mail'] = 'second@gmail.com';
         $firstUserEntity = new UserEntity($firstUser);
@@ -251,8 +251,8 @@ class TestUserRepository extends TestCase
 
         $this->assertSame($errorCode, '99998');
 
-        $userRepository->delete($firstUserEntity);
-        $userRepository->delete($secondUserEntity);
+        $userRepository->deleteUser($firstUserEntity);
+        $userRepository->deleteUser($secondUserEntity);
     }
 
     /**
@@ -264,9 +264,9 @@ class TestUserRepository extends TestCase
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
 
-        $userRepository->create($userEntity);
+        $userRepository->createUser($userEntity);
 
-        $errorCode = $userRepository->delete($userEntity);
+        $errorCode = $userRepository->deleteUser($userEntity);
         $this->assertSame($errorCode, '00000');
     }
 
@@ -279,7 +279,7 @@ class TestUserRepository extends TestCase
         $userEntity = new UserEntity($this->user);
         $userRepository = new UserRepository($mysql->getPdo());
 
-        $userRepository->create($userEntity);
+        $userRepository->createUser($userEntity);
 
         $errorCode = $userRepository->deleteMaxIDUser();
         $this->assertSame($errorCode, '00000');

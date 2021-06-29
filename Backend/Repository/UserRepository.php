@@ -26,7 +26,7 @@ class UserRepository implements IUserRepository
      * @param UserEntity $userEntity 登録するユーザー。
      * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
      */
-    public function create(UserEntity $userEntity): string
+    public function createUser(UserEntity $userEntity): string
     {
         if ($this->readUserFromMail($userEntity->getMail())) {
             return self::EXISTS_MAIL_CODE;
@@ -150,7 +150,7 @@ class UserRepository implements IUserRepository
      * @param UserEntity $userEntity 削除するユーザー。
      * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
      */
-    public function delete(UserEntity $userEntity): string
+    public function deleteUser(UserEntity $userEntity): string
     {
         $sql = 'delete from user where id = :id;';
         $stmt = $this->pdo->prepare($sql);
