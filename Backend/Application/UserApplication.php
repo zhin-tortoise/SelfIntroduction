@@ -67,6 +67,20 @@ class UserApplication
     }
 
     /**
+     * ユーザーを更新する。
+     * @param array $user ユーザーの配列。
+     * @return string エラーコード。
+     */
+    public function updateUser(array $user): string
+    {
+        $mysql = new Mysql();
+        $userEntity = new UserEntity($user);
+        $userRepository = new UserRepository($mysql->getPdo());
+
+        return $userRepository->updateUser($userEntity);
+    }
+
+    /**
      * ユーザーを削除する。
      * @param array $user ユーザーの配列。
      * @return string エラーコード。

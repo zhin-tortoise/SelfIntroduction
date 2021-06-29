@@ -168,6 +168,94 @@ class TestUserRepository extends TestCase
     }
 
     /**
+     * ユーザーエンティティを更新する。
+     */
+    public function testUpdateUser(): void
+    {
+        $mysql = new Mysql();
+        $userEntity = new UserEntity($this->user);
+        $userRepository = new UserRepository($mysql->getPdo());
+
+        $userRepository->create($userEntity);
+
+        $user = $this->user;
+        $user['name'] = 'updateUser';
+        $user['mail'] = 'updateUser@gmail.com';
+        $user['password'] = '$2a$08$NDL7bvS5llgksICHNQEmneCi68hw4hW320tXZMfFbG3F9YXL6yQPi';
+        $user['picture'] = 'update.jpg';
+        $user['birthday'] = '2021/06/29';
+        $user['gender'] = '女';
+        $user['background'] = '更新用の経歴。';
+        $user['qualification'] = '更新用の資格。';
+        $user['profile'] = '更新用のプロフィール。';
+
+        $updateUserEntity = new UserEntity($user);
+        $userRepository->updateUser($updateUserEntity);
+        $dbUpdateUserEntity = $userRepository->readUserFromID($user['id']);
+
+        $this->assertSame($dbUpdateUserEntity->getID(), (string)$user['id']);
+        $this->assertSame($dbUpdateUserEntity->getName(), $user['name']);
+        $this->assertSame($dbUpdateUserEntity->getMail(), $user['mail']);
+        $this->assertSame($dbUpdateUserEntity->getPassword(), $user['password']);
+        $this->assertSame($dbUpdateUserEntity->getPicture(), $user['picture']);
+        $this->assertSame($dbUpdateUserEntity->getBirthday(), str_replace('/', '-', $user['birthday']));
+        $this->assertSame($dbUpdateUserEntity->getGender(), $user['gender']);
+        $this->assertSame($dbUpdateUserEntity->getBackground(), $user['background']);
+        $this->assertSame($dbUpdateUserEntity->getQualification(), $user['qualification']);
+        $this->assertSame($dbUpdateUserEntity->getProfile(), $user['profile']);
+
+        $userRepository->delete($dbUpdateUserEntity);
+    }
+
+    /**
+     * 存在しないユーザーエンティティを更新する。
+     */
+    public function testUpdateNotExistsUser(): void
+    {
+        $mysql = new Mysql();
+        $userEntity = new UserEntity($this->user);
+        $userRepository = new UserRepository($mysql->getPdo());
+
+        $userRepository->create($userEntity);
+
+        $updateUser = $this->user;
+        $updateUser['id'] = 0;
+        $updateUser['mail'] = 'update@gmail.com';
+        $updateUserEntity = new UserEntity($updateUser);
+        $errorCode = $userRepository->updateUser($updateUserEntity);
+
+        $this->assertSame($errorCode, '00000');
+    }
+
+    /**
+     * 自身のメールアドレス以外に既に存在するメールアドレスでユーザーエンティティを更新する。
+     */
+    public function testUpdateExistsMailUser(): void
+    {
+        $mysql = new Mysql();
+        $userRepository = new UserRepository($mysql->getPdo());
+
+        $firstUser = $this->user;
+        $firstUserEntity = new UserEntity($firstUser);
+        $userRepository->create($firstUserEntity);
+
+        $secondUser = $this->user;
+        $secondUser['id'] = $secondUser['id'] + 1;
+        $secondUser['mail'] = 'second@gmail.com';
+        $secondUserEntity = new UserEntity($secondUser);
+        $userRepository->create($secondUserEntity);
+
+        $firstUser['mail'] = 'second@gmail.com';
+        $firstUserEntity = new UserEntity($firstUser);
+        $errorCode = $userRepository->updateUser($firstUserEntity);
+
+        $this->assertSame($errorCode, '99998');
+
+        $userRepository->delete($firstUserEntity);
+        $userRepository->delete($secondUserEntity);
+    }
+
+    /**
      * ユーザーエンティティをDBから削除する。
      */
     public function testDeleteUser(): void
