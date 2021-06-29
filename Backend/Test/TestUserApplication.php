@@ -75,7 +75,7 @@ class TestUserApplication extends TestCase
      * パスワードがbcryptでないユーザーを作成する。
      * パスワードがbcryptで登録されていることを確認する。
      */
-    public function testCreateNotBcryptPasswordUser()
+    public function testCreateNotBcryptPasswordUser(): void
     {
         $user = $this->user;
         $user['password'] = 'password';
@@ -83,11 +83,50 @@ class TestUserApplication extends TestCase
         $userApplication = new UserApplication();
         $userApplication->create($user);
 
-        $mysql = new Mysql();
-        $userRepository = new UserRepository($mysql->getPdo());
-        $userEntity = $userRepository->readUserFromMail($user['mail']);
-
+        $userEntity = $userApplication->readFromID($user['id']);
         $this->assertTrue(password_verify('password', $userEntity->getPassword()));
+
+        $userApplication->delete($this->user);
+    }
+
+    /**
+     * IDからユーザーを取得する。
+     */
+    public function testReadUserFromID(): void
+    {
+        $userApplication = new UserApplication();
+        $userApplication->create($this->user);
+        $userEntity = $userApplication->readFromID($this->user['id']);
+
+        $this->assertSame($userEntity->getID(), (string)$this->user['id']);
+
+        $userApplication->delete($this->user);
+    }
+
+    /**
+     * メールアドレスからユーザーを取得する。
+     */
+    public function testReadUserFromMail(): void
+    {
+        $userApplication = new UserApplication();
+        $userApplication->create($this->user);
+        $userEntity = $userApplication->readFromMail($this->user['mail']);
+
+        $this->assertSame($userEntity->getID(), (string)$this->user['id']);
+
+        $userApplication->delete($this->user);
+    }
+
+    /**
+     * 全てのユーザーを取得する。
+     */
+    public function testReadAllUser(): void
+    {
+        $userApplication = new UserApplication();
+        $userApplication->create($this->user);
+        $userEntities = $userApplication->readAll();
+
+        $this->assertFalse(empty($userEntities));
 
         $userApplication->delete($this->user);
     }

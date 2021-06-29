@@ -57,6 +57,22 @@ class UserRepository implements IUserRepository
     }
 
     /**
+     * IDを引数から取得し、そのIDからユーザーを読み取り、ユーザーエンティティを返す。
+     * @param int $id ユーザーID。
+     * @return UserEntity | false 引数で与えられたIDに紐づくユーザーエンティティ。
+     *                            存在しないメールアドレスの場合は、falseが返る。
+     */
+    public function readUserFromID(int $id)
+    {
+        $sql = 'select * from user where id = :id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        return $stmt->rowCount() ? new UserEntity($stmt->fetch()) : false;
+    }
+
+    /**
      * メールアドレスを引数から取得し、そのメールアドレスからユーザーを読み取り、ユーザーエンティティを返す。
      * @param string $mail ユーザーのメールアドレス。
      * @return UserEntity | false 引数で与えられたメールアドレスに紐づくユーザーエンティティ。
@@ -70,6 +86,24 @@ class UserRepository implements IUserRepository
         $stmt->execute();
 
         return $stmt->rowCount() ? new UserEntity($stmt->fetch()) : false;
+    }
+
+    /**
+     * 全てのユーザーを取得する。
+     * @return array DBに登録されている全てのユーザーエンティティが含まれた配列。
+     */
+    public function readAllUser(): array
+    {
+        $sql = 'select * from user;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        $userEntities = [];
+        foreach ($stmt->fetchAll() as $user) {
+            $userEntities[] = new UserEntity($user);
+        }
+
+        return $userEntities;
     }
 
     /**
