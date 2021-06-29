@@ -117,9 +117,26 @@ class TestUserRepository extends TestCase
     }
 
     /**
+     * IDからユーザーエンティティを取得する。
+     */
+    public function testReadUserFromID(): void
+    {
+        $mysql = new Mysql();
+        $userEntity = new UserEntity($this->user);
+        $userRepository = new UserRepository($mysql->getPdo());
+
+        $userRepository->create($userEntity);
+        $dbUserEntity = $userRepository->readUserFromID($this->user['id']);
+
+        $this->assertSame($dbUserEntity->getID(), (string)$this->user['id']);
+
+        $userRepository->delete($userEntity);
+    }
+
+    /**
      * メールアドレスからユーザーエンティティを取得する。
      */
-    public function testReadUserFromMail()
+    public function testReadUserFromMail(): void
     {
         $mysql = new Mysql();
         $userEntity = new UserEntity($this->user);
@@ -134,6 +151,23 @@ class TestUserRepository extends TestCase
     }
 
     /**
+     * 全てのユーザーエンティティを取得する。
+     */
+    public function testReadAllUser(): void
+    {
+        $mysql = new Mysql();
+        $userEntity = new UserEntity($this->user);
+        $userRepository = new UserRepository($mysql->getPdo());
+
+        $userRepository->create($userEntity);
+        $userEntities = $userRepository->readAllUser();
+
+        $this->assertFalse(empty($userEntities));
+
+        $userRepository->delete($userEntity);
+    }
+
+    /**
      * ユーザーエンティティをDBから削除する。
      */
     public function testDeleteUser(): void
@@ -143,6 +177,7 @@ class TestUserRepository extends TestCase
         $userRepository = new UserRepository($mysql->getPdo());
 
         $userRepository->create($userEntity);
+
         $errorCode = $userRepository->delete($userEntity);
         $this->assertSame($errorCode, '00000');
     }
