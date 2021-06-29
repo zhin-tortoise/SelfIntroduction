@@ -6,12 +6,12 @@
 
 class UserEntity
 {
-    private int $id; // ユーザーID
+    private $id; // ユーザーID。nullを許容するため、intの型宣言はなし。
     private string $name; // ユーザー名
     private string $mail; // メールアドレス
     private string $password; // パスワード
     private string $picture; // 写真
-    private string $birthday; // 誕生日
+    private $birthday; // 誕生日。nullを許容するため、stringの型宣言はなし。nullを許容する理由はnullでのinsertに対応するため。
     private string $gender; // 性別
     private string $background; // 経歴
     private string $qualification; // 資格
@@ -23,23 +23,28 @@ class UserEntity
      */
     public function __construct(array $user)
     {
-        $this->id = $user['id'];
-        $this->name = $user['name'];
-        $this->mail = $user['mail'];
-        $this->password = $user['password'];
-        $this->picture = $user['picture'];
-        $this->birthday = $user['birthday'];
-        $this->gender = $user['gender'];
-        $this->background = $user['background'];
-        $this->qualification = $user['qualification'];
-        $this->profile = $user['profile'];
+        $this->id = array_key_exists('id', $user) && !empty($user['id']) ? $user['id'] : null;
+        $this->name = array_key_exists('name', $user) ? $user['name'] : '';
+        $this->mail = array_key_exists('mail', $user) ? $user['mail'] : '';
+        if (array_key_exists('password', $user)) {
+            $this->password = $this->is_bcrypt_hash($user['password']) ? $user['password'] : password_hash($user['password'], PASSWORD_BCRYPT);
+        } else {
+            $this->password = '';
+        }
+        $this->picture = array_key_exists('picture', $user) ? $user['picture'] : '';
+        $this->birthday = array_key_exists('birthday', $user) && !empty($user['birthday']) ? $user['birthday'] : null;
+        $this->gender = array_key_exists('gender', $user) ? $user['gender'] : '';
+        $this->background = array_key_exists('background', $user) ? $user['background'] : '';
+        $this->qualification = array_key_exists('qualification', $user) ? $user['qualification'] : '';
+        $this->profile = array_key_exists('profile', $user) ? $user['profile'] : '';
     }
+
 
     /**
      * ユーザーIDのゲッター。
      * @return int ユーザーID。
      */
-    public function getID(): int
+    public function getID() // nullが返る場合とintが返る場合があるため、戻り値の型宣言はない。
     {
         return $this->id;
     }
@@ -84,7 +89,7 @@ class UserEntity
      * 誕生日のゲッター。
      * @return string 誕生日。
      */
-    public function getBirthday(): string
+    public function getBirthday() // nullが返る場合とstringが返る場合があるため、戻り値の型宣言はない。
     {
         return $this->birthday;
     }
@@ -123,5 +128,13 @@ class UserEntity
     public function getProfile(): string
     {
         return $this->profile;
+    }
+
+    /**
+     * パスワードがbcryptハッシュならtrue、それ以外ならfalseを返す。
+     */
+    private function is_bcrypt_hash($password): bool
+    {
+        return strlen($password) === 60 && mb_substr($password, 0, 2) === '$2';
     }
 }
