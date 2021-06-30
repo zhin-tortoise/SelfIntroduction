@@ -39,7 +39,6 @@ class UserEntity
         $this->profile = array_key_exists('profile', $user) ? $user['profile'] : '';
     }
 
-
     /**
      * ユーザーIDのゲッター。
      * @return int ユーザーID。
