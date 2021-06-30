@@ -41,7 +41,7 @@ class UserEntity
 
     /**
      * ユーザーIDのゲッター。
-     * @return int ユーザーID。
+     * @return int|null ユーザーID。
      */
     public function getID() // nullが返る場合とintが返る場合があるため、戻り値の型宣言はない。
     {
@@ -86,7 +86,7 @@ class UserEntity
 
     /**
      * 誕生日のゲッター。
-     * @return string 誕生日。
+     * @return string|null 誕生日。
      */
     public function getBirthday() // nullが返る場合とstringが返る場合があるため、戻り値の型宣言はない。
     {
