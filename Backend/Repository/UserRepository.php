@@ -169,7 +169,7 @@ class UserRepository implements IUserRepository
      * IDが最大のユーザーを削除する。
      * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
      */
-    public function deleteMaxIDUser()
+    public function deleteMaxIDUser(): string
     {
         $sql = 'delete from user order by id desc limit 1;';
         $stmt = $this->pdo->prepare($sql);
