@@ -94,7 +94,7 @@ class TestUserRepository extends TestCase
         $errorCode = $this->userRepository->createUser($userEntity);
         $this->assertSame($errorCode, self::SUCCESS_CODE);
 
-        $this->userRepository->deleteMaxIDUser();
+        $this->userRepository->deleteMaxIdUser();
     }
 
     /**
@@ -120,7 +120,7 @@ class TestUserRepository extends TestCase
         $this->userRepository->createUser($userEntity);
         $dbUserEntity = $this->userRepository->readUserFromID($this->user['id']);
 
-        $this->assertSame($dbUserEntity->getID(), (string)$this->user['id']);
+        $this->assertSame($dbUserEntity->getId(), (string)$this->user['id']);
 
         $this->userRepository->deleteUser($userEntity);
     }
@@ -134,7 +134,7 @@ class TestUserRepository extends TestCase
         $this->userRepository->createUser($userEntity);
         $dbUserEntity = $this->userRepository->readUserFromMail($this->user['mail']);
 
-        $this->assertSame($dbUserEntity->getID(), (string)$this->user['id']);
+        $this->assertSame($dbUserEntity->getId(), (string)$this->user['id']);
 
         $this->userRepository->deleteUser($userEntity);
     }
@@ -176,7 +176,7 @@ class TestUserRepository extends TestCase
         $this->userRepository->updateUser($updateUserEntity);
         $dbUpdateUserEntity = $this->userRepository->readUserFromID($user['id']);
 
-        $this->assertSame($dbUpdateUserEntity->getID(), (string)$user['id']);
+        $this->assertSame($dbUpdateUserEntity->getId(), (string)$user['id']);
         $this->assertSame($dbUpdateUserEntity->getName(), $user['name']);
         $this->assertSame($dbUpdateUserEntity->getMail(), $user['mail']);
         $this->assertSame($dbUpdateUserEntity->getPassword(), $user['password']);
@@ -247,12 +247,12 @@ class TestUserRepository extends TestCase
     /**
      * IDが最大のユーザーを削除する。
      */
-    public function testDeleteMaxIDUser(): void
+    public function testDeleteMaxIdUser(): void
     {
         $userEntity = new UserEntity($this->user);
         $this->userRepository->createUser($userEntity);
 
-        $errorCode = $this->userRepository->deleteMaxIDUser();
+        $errorCode = $this->userRepository->deleteMaxIdUser();
         $this->assertSame($errorCode, self::SUCCESS_CODE);
     }
 }
