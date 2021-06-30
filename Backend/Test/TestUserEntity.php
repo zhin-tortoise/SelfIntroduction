@@ -95,7 +95,7 @@ class TestUserEntity extends TestCase
     /**
      * パスワードがbcryptハッシュでないならハッシュに変換する。
      */
-    public function testPasswordToBcrypt()
+    public function testPasswordToBcrypt(): void
     {
         $user = $this->user;
         $user['password'] = 'password';
@@ -107,7 +107,7 @@ class TestUserEntity extends TestCase
     /**
      * 誕生日が空のユーザーエンティティを作成する。
      */
-    public function testCreateEmptyBirthdayUser()
+    public function testCreateEmptyBirthdayUser(): void
     {
         $user = $this->user;
         $user['birthday'] = '';

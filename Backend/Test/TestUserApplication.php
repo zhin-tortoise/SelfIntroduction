@@ -7,11 +7,11 @@
 use PHPUnit\Framework\TestCase;
 
 require_once(dirname(__FILE__) . '/../Application/UserApplication.php');
-require_once(dirname(__FILE__) . '/../Repository/MysqlRepository.php');
-require_once(dirname(__FILE__) . '/../Repository/UserRepository.php');
 
 class TestUserApplication extends TestCase
 {
+    const SUCCESS_CODE = '00000';
+
     private int $id = 100; // ユーザーID
     private string $name = 'testUser'; // ユーザー名
     private string $mail = 'testUser@gmail.com'; // メールアドレス
@@ -23,6 +23,8 @@ class TestUserApplication extends TestCase
     private string $qualification = 'テスト用の資格。'; // 資格
     private string $profile = 'テスト用のプロフィール。'; // プロフィール
     private array $user; // ユーザーエンティティの作成に使用する配列。
+
+    private UserApplication $userApplication;
 
     /**
      * ユーザーエンティティ作成用の配列を用意する。
@@ -41,6 +43,8 @@ class TestUserApplication extends TestCase
             'qualification' => $this->qualification,
             'profile' => $this->profile
         ];
+
+        $this->userApplication = new UserApplication();
     }
 
     /**
@@ -48,12 +52,10 @@ class TestUserApplication extends TestCase
      */
     public function testCreateUser(): void
     {
-        $userApplication = new UserApplication();
-        $errorCode = $userApplication->createUser($this->user);
+        $errorCode = $this->userApplication->createUser($this->user);
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
 
-        $this->assertSame($errorCode, '00000');
-
-        $userApplication->deleteUser($this->user);
+        $this->userApplication->deleteUser($this->user);
     }
 
     /**
@@ -61,14 +63,10 @@ class TestUserApplication extends TestCase
      */
     public function testCreateEmptyUser(): void
     {
-        $userApplication = new UserApplication();
-        $errorCode = $userApplication->createUser([]);
+        $errorCode = $this->userApplication->createUser([]);
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
 
-        $this->assertSame($errorCode, '00000');
-
-        $mysql = new Mysql();
-        $userRepository = new UserRepository($mysql->getPdo());
-        $userRepository->deleteMaxIDUser();
+        $this->userApplication->deleteMaxIDUser();
     }
 
     /**
@@ -79,14 +77,12 @@ class TestUserApplication extends TestCase
     {
         $user = $this->user;
         $user['password'] = 'password';
+        $this->userApplication->createUser($user);
 
-        $userApplication = new UserApplication();
-        $userApplication->createUser($user);
-
-        $userEntity = $userApplication->readUserFromID($user['id']);
+        $userEntity = $this->userApplication->readUserFromID($user['id']);
         $this->assertTrue(password_verify('password', $userEntity->getPassword()));
 
-        $userApplication->deleteUser($this->user);
+        $this->userApplication->deleteUser($this->user);
     }
 
     /**
@@ -94,13 +90,12 @@ class TestUserApplication extends TestCase
      */
     public function testReadUserFromID(): void
     {
-        $userApplication = new UserApplication();
-        $userApplication->createUser($this->user);
-        $userEntity = $userApplication->readUserFromID($this->user['id']);
+        $this->userApplication->createUser($this->user);
+        $userEntity = $this->userApplication->readUserFromID($this->user['id']);
 
         $this->assertSame($userEntity->getID(), (string)$this->user['id']);
 
-        $userApplication->deleteUser($this->user);
+        $this->userApplication->deleteUser($this->user);
     }
 
     /**
@@ -108,13 +103,12 @@ class TestUserApplication extends TestCase
      */
     public function testReadUserFromMail(): void
     {
-        $userApplication = new UserApplication();
-        $userApplication->createUser($this->user);
-        $userEntity = $userApplication->readUserFromMail($this->user['mail']);
+        $this->userApplication->createUser($this->user);
+        $userEntity = $this->userApplication->readUserFromMail($this->user['mail']);
 
         $this->assertSame($userEntity->getID(), (string)$this->user['id']);
 
-        $userApplication->deleteUser($this->user);
+        $this->userApplication->deleteUser($this->user);
     }
 
     /**
@@ -122,13 +116,12 @@ class TestUserApplication extends TestCase
      */
     public function testReadAllUser(): void
     {
-        $userApplication = new UserApplication();
-        $userApplication->createUser($this->user);
-        $userEntities = $userApplication->readAllUser();
+        $this->userApplication->createUser($this->user);
+        $userEntities = $this->userApplication->readAllUser();
 
         $this->assertFalse(empty($userEntities));
 
-        $userApplication->deleteUser($this->user);
+        $this->userApplication->deleteUser($this->user);
     }
 
     /**
@@ -136,8 +129,7 @@ class TestUserApplication extends TestCase
      */
     public function testUpdateUser(): void
     {
-        $userApplication = new UserApplication();
-        $userApplication->createUser($this->user);
+        $this->userApplication->createUser($this->user);
 
         $user = $this->user;
         $user['name'] = 'updateUser';
@@ -149,9 +141,9 @@ class TestUserApplication extends TestCase
         $user['background'] = '更新用の経歴。';
         $user['qualification'] = '更新用の資格。';
         $user['profile'] = '更新用のプロフィール。';
-        $errorCode = $userApplication->updateUser($user);
+        $errorCode = $this->userApplication->updateUser($user);
 
-        $this->assertSame($errorCode, '00000');
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
     }
 
     /**
@@ -159,10 +151,20 @@ class TestUserApplication extends TestCase
      */
     public function testDeleteUser(): void
     {
-        $userApplication = new UserApplication();
-        $userApplication->createUser($this->user);
-        $errorCode = $userApplication->deleteUser($this->user);
+        $this->userApplication->createUser($this->user);
+        $errorCode = $this->userApplication->deleteUser($this->user);
 
-        $this->assertSame($errorCode, '00000');
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
+    }
+
+    /**
+     * IDが最大のユーザーを削除する。
+     */
+    public function testDeleteMaxIDUser(): void
+    {
+        $this->userApplication->createUser([]);
+
+        $errorCode = $this->userApplication->deleteMaxIDUser();
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
     }
 }

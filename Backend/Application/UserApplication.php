@@ -11,6 +11,14 @@ require_once(dirname(__FILE__) . '/../repository/MysqlRepository.php');
 
 class UserApplication
 {
+    private $userRepository;
+
+    public function __construct()
+    {
+        $mysql = new Mysql();
+        $this->userRepository = new UserRepository($mysql->getPdo());
+    }
+
     /**
      * ユーザーを作成する。
      * @param array $user ユーザーの配列。
@@ -18,10 +26,8 @@ class UserApplication
      */
     public function createUser(array $user): string
     {
-        $mysql = new Mysql();
-        $userRepository = new UserRepository($mysql->getPdo());
         $userEntity = new UserEntity($user);
-        $errorCode = $userRepository->createUser($userEntity);
+        $errorCode = $this->userRepository->createUser($userEntity);
 
         return $errorCode;
     }
@@ -34,10 +40,7 @@ class UserApplication
      */
     public function readUserFromID(int $id)
     {
-        $mysql = new Mysql();
-        $userRepository = new UserRepository($mysql->getPdo());
-
-        return $userRepository->readUserFromID($id);
+        return $this->userRepository->readUserFromID($id);
     }
 
     /**
@@ -48,10 +51,7 @@ class UserApplication
      */
     public function readUserFromMail(string $mail)
     {
-        $mysql = new Mysql();
-        $userRepository = new UserRepository($mysql->getPdo());
-
-        return $userRepository->readUserFromMail($mail);
+        return $this->userRepository->readUserFromMail($mail);
     }
 
     /**
@@ -60,10 +60,7 @@ class UserApplication
      */
     public function readAllUser(): array
     {
-        $mysql = new Mysql();
-        $userRepository = new UserRepository($mysql->getPdo());
-
-        return $userRepository->readAllUser();
+        return $this->userRepository->readAllUser();
     }
 
     /**
@@ -73,11 +70,9 @@ class UserApplication
      */
     public function updateUser(array $user): string
     {
-        $mysql = new Mysql();
         $userEntity = new UserEntity($user);
-        $userRepository = new UserRepository($mysql->getPdo());
 
-        return $userRepository->updateUser($userEntity);
+        return $this->userRepository->updateUser($userEntity);
     }
 
     /**
@@ -87,11 +82,18 @@ class UserApplication
      */
     public function deleteUser(array $user): string
     {
-        $mysql = new Mysql();
-        $userRepository = new UserRepository($mysql->getPdo());
         $userEntity = new UserEntity($user);
-        $errorCode = $userRepository->deleteUser($userEntity);
+        $errorCode = $this->userRepository->deleteUser($userEntity);
 
         return $errorCode;
+    }
+
+    /**
+     * IDが最大のユーザーを削除する。
+     * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
+     */
+    public function deleteMaxIDUser()
+    {
+        return $this->userRepository->deleteMaxIDUser();
     }
 }
