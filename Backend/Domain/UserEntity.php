@@ -43,7 +43,7 @@ class UserEntity
      * ユーザーIDのゲッター。
      * @return int|null ユーザーID。
      */
-    public function getID() // nullが返る場合とintが返る場合があるため、戻り値の型宣言はない。
+    public function getId() // nullが返る場合とintが返る場合があるため、戻り値の型宣言はない。
     {
         return $this->id;
     }

@@ -12,5 +12,5 @@ interface IUserRepository
     public function readAllUser(): array;
     public function updateUser(UserEntity $userEntity): string;
     public function deleteUser(UserEntity $userEntity): string;
-    public function deleteMaxIDUser(): string;
+    public function deleteMaxIdUser(): string;
 }

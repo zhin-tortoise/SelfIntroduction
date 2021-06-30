@@ -66,7 +66,7 @@ class TestUserApplication extends TestCase
         $errorCode = $this->userApplication->createUser([]);
         $this->assertSame($errorCode, self::SUCCESS_CODE);
 
-        $this->userApplication->deleteMaxIDUser();
+        $this->userApplication->deleteMaxIdUser();
     }
 
     /**
@@ -93,7 +93,7 @@ class TestUserApplication extends TestCase
         $this->userApplication->createUser($this->user);
         $userEntity = $this->userApplication->readUserFromID($this->user['id']);
 
-        $this->assertSame($userEntity->getID(), (string)$this->user['id']);
+        $this->assertSame($userEntity->getId(), (string)$this->user['id']);
 
         $this->userApplication->deleteUser($this->user);
     }
@@ -106,7 +106,7 @@ class TestUserApplication extends TestCase
         $this->userApplication->createUser($this->user);
         $userEntity = $this->userApplication->readUserFromMail($this->user['mail']);
 
-        $this->assertSame($userEntity->getID(), (string)$this->user['id']);
+        $this->assertSame($userEntity->getId(), (string)$this->user['id']);
 
         $this->userApplication->deleteUser($this->user);
     }
@@ -164,7 +164,7 @@ class TestUserApplication extends TestCase
     {
         $this->userApplication->createUser([]);
 
-        $errorCode = $this->userApplication->deleteMaxIDUser();
+        $errorCode = $this->userApplication->deleteMaxIdUser();
         $this->assertSame($errorCode, self::SUCCESS_CODE);
     }
 }

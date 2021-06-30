@@ -49,7 +49,7 @@ class TestUserEntity extends TestCase
     {
         $userEntity = new UserEntity($this->user);
 
-        $this->assertSame($userEntity->getID(), $this->id);
+        $this->assertSame($userEntity->getId(), $this->id);
         $this->assertSame($userEntity->getName(), $this->name);
         $this->assertSame($userEntity->getMail(), $this->mail);
         $this->assertSame($userEntity->getPassword(), $this->password);
@@ -68,7 +68,7 @@ class TestUserEntity extends TestCase
     {
         $userEntity = new UserEntity([]);
 
-        $this->assertSame($userEntity->getID(), null);
+        $this->assertSame($userEntity->getId(), null);
         $this->assertSame($userEntity->getName(), '');
         $this->assertSame($userEntity->getMail(), '');
         $this->assertSame($userEntity->getPassword(), '');
@@ -89,7 +89,7 @@ class TestUserEntity extends TestCase
         $user['id'] = '';
         $userEntity = new UserEntity($user);
 
-        $this->assertNull($userEntity->getID());
+        $this->assertNull($userEntity->getId());
     }
 
     /**
