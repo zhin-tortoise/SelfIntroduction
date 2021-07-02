@@ -45,4 +45,19 @@ class JobChangeRepository implements IJobChangeRepository
 
         return $stmt->errorCode();
     }
+
+    /**
+     * 転職事由エンティティを引数から取得し、その転職事由をDBから削除する。
+     * @param JobChangeEntity $jobChangeEntity 削除する転職事由。
+     * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
+     */
+    public function deleteJobChange(JobChangeEntity $jobChangeEntity): string
+    {
+        $sql = 'delete from job_change where id = :id;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $jobChangeEntity->getId());
+        $stmt->execute();
+
+        return $stmt->errorCode();
+    }
 }
