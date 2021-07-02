@@ -63,4 +63,13 @@ class TestJobChangeApplication extends TestCase
         $errorCode = $this->jobChangeApplication->createJobChange($this->jobChange);
         $this->assertSame($errorCode, self::SUCCESS_CODE);
     }
+
+    /**
+     * 転職事由を削除する。
+     */
+    public function testDeleteJobChange(): void
+    {
+        $errorCode = $this->jobChangeApplication->deleteJobChange($this->jobChange);
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
+    }
 }

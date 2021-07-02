@@ -20,7 +20,7 @@ class JobChangeApplication
     }
 
     /**
-     * ユーザーを作成する。
+     * 転職事由を作成する。
      * @param array $jobChange 転職事由の配列。
      * @return string エラーコード。
      */
@@ -28,6 +28,19 @@ class JobChangeApplication
     {
         $jobChangeEntity = new JobChangeEntity($jobChange);
         $errorCode = $this->jobChangeRepository->createJobChange($jobChangeEntity);
+
+        return $errorCode;
+    }
+
+    /**
+     * 転職事由を削除する。
+     * @param array $jobChange 転職事由の配列。
+     * @return string エラーコード。
+     */
+    public function deleteJobChange(array $jobChange): string
+    {
+        $jobChangeEntity = new JobChangeEntity($jobChange);
+        $errorCode = $this->jobChangeRepository->deleteJobChange($jobChangeEntity);
 
         return $errorCode;
     }

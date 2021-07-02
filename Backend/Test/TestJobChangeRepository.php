@@ -82,4 +82,16 @@ class TestJobChangeRepository extends TestCase
         $errorCode = $this->jobChangeRepository->createJobChange($jobChangeEntity);
         $this->assertSame($errorCode, self::SUCCESS_CODE);
     }
+
+    /**
+     * 転職事由エンティティをDBから削除する。
+     */
+    public function testDeleteJobChange(): void
+    {
+        $jobChangeEntity = new JobChangeEntity($this->jobChange);
+        $this->jobChangeRepository->createJobChange($jobChangeEntity);
+
+        $errorCode = $this->jobChangeRepository->deleteJobChange($jobChangeEntity);
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
+    }
 }
