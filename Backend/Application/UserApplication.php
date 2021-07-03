@@ -36,7 +36,7 @@ class UserApplication
      * IDからユーザーを取得する。
      * @param int $id 取得するユーザーのID。
      * @return UserEntity | false 引数で与えられたIDに紐づくユーザーエンティティ。
-     *                            存在しないメールアドレスの場合は、falseが返る。
+     *                            存在しないIDの場合は、falseが返る。
      */
     public function readUserFromId(int $id)
     {
