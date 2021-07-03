@@ -67,16 +67,16 @@ class TestUserRepository extends TestCase
     /**
      * 同一のIDのユーザーエンティティを複数作成し、DBに登録する。
      */
-    public function testCreateSameIDUser(): void
+    public function testCreateSameIdUser(): void
     {
         $userEntity = new UserEntity($this->user);
         $this->userRepository->createUser($userEntity);
 
-        $sameIDUser = $this->user;
-        $sameIDUser['mail'] = 'sameIDUser@gmail.com'; // 同一のメールアドレスだと弾かれるため変更する。
-        $sameIDUserEntity = new UserEntity($sameIDUser);
+        $sameIdUser = $this->user;
+        $sameIdUser['mail'] = 'sameIdUser@gmail.com'; // 同一のメールアドレスだと弾かれるため変更する。
+        $sameIdUserEntity = new UserEntity($sameIdUser);
 
-        $errorCode = $this->userRepository->createUser($sameIDUserEntity);
+        $errorCode = $this->userRepository->createUser($sameIdUserEntity);
         $this->assertSame($errorCode, self::EXISTS_ID_CODE);
 
         $this->userRepository->deleteUser($userEntity);
@@ -114,11 +114,11 @@ class TestUserRepository extends TestCase
     /**
      * IDからユーザーエンティティを取得する。
      */
-    public function testReadUserFromID(): void
+    public function testReadUserFromId(): void
     {
         $userEntity = new UserEntity($this->user);
         $this->userRepository->createUser($userEntity);
-        $dbUserEntity = $this->userRepository->readUserFromID($this->user['id']);
+        $dbUserEntity = $this->userRepository->readUserFromId($this->user['id']);
 
         $this->assertSame($dbUserEntity->getId(), (string)$this->user['id']);
 
@@ -174,7 +174,7 @@ class TestUserRepository extends TestCase
 
         $updateUserEntity = new UserEntity($user);
         $this->userRepository->updateUser($updateUserEntity);
-        $dbUpdateUserEntity = $this->userRepository->readUserFromID($user['id']);
+        $dbUpdateUserEntity = $this->userRepository->readUserFromId($user['id']);
 
         $this->assertSame($dbUpdateUserEntity->getId(), (string)$user['id']);
         $this->assertSame($dbUpdateUserEntity->getName(), $user['name']);

@@ -74,7 +74,7 @@ class TestJobChangeRepository extends TestCase
     /**
      * IDが空の転職事由エンティティを作成し、DBに登録する。
      */
-    public function testCreateEmptyIDJobChange(): void
+    public function testCreateEmptyIdJobChange(): void
     {
         $jobChange = $this->jobChange;
         $jobChange['id'] = '';

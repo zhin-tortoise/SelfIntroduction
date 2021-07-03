@@ -83,7 +83,7 @@ class TestUserEntity extends TestCase
     /**
      * IDが空のユーザーエンティティを作成する。
      */
-    public function testCreateEmptyIDUser(): void
+    public function testCreateEmptyIdUser(): void
     {
         $user = $this->user;
         $user['id'] = '';
