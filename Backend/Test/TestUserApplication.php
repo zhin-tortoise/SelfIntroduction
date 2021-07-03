@@ -10,7 +10,7 @@ require_once(dirname(__FILE__) . '/../Application/UserApplication.php');
 
 class TestUserApplication extends TestCase
 {
-    const SUCCESS_CODE = '00000';
+    const SUCCESS_CODE = '00000'; // DB操作の成功時のエラーコード
 
     private int $id = 100; // ユーザーID
     private string $name = 'testUser'; // ユーザー名

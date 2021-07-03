@@ -21,7 +21,7 @@ class TestUserEntity extends TestCase
     private string $background = 'テスト用の経歴。'; // 経歴
     private string $qualification = 'テスト用の資格。'; // 資格
     private string $profile = 'テスト用のプロフィール。'; // プロフィール
-    private array $user;
+    private array $user; // ユーザーエンティティ作成用の配列
 
     /**
      * ユーザーエンティティ作成用の配列を用意する。
