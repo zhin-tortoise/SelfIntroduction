@@ -7,4 +7,5 @@
 interface IJobChangeRepository
 {
     public function createJobChange(JobChangeEntity $jobChangeEntity): string;
+    public function deleteJobChange(JobChangeEntity $jobChangeEntity): string;
 }
