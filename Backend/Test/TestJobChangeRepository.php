@@ -84,6 +84,30 @@ class TestJobChangeRepository extends TestCase
     }
 
     /**
+     * IDから転職事由エンティティを取得する。
+     */
+    public function testReadJobChangeFromId(): void
+    {
+        $jobChangeEntity = new JobChangeEntity($this->jobChange);
+        $this->jobChangeRepository->createJobChange($jobChangeEntity);
+        $dbJobChangeEntity = $this->jobChangeRepository->readJobChangeFromId($this->jobChange['id']);
+
+        $this->assertSame($dbJobChangeEntity->getId(), (string)$this->jobChange['id']);
+    }
+
+    /**
+     * 全ての転職事由エンティティを取得する。
+     */
+    public function testReadAllJobChange(): void
+    {
+        $jobChangeEntity = new JobChangeEntity($this->jobChange);
+        $this->jobChangeRepository->createJobChange($jobChangeEntity);
+        $jobChanges = $this->jobChangeRepository->readAllJobChange();
+
+        $this->assertFalse(empty($jobChanges));
+    }
+
+    /**
      * 転職事由エンティティをDBから削除する。
      */
     public function testDeleteJobChange(): void
