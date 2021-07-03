@@ -47,6 +47,40 @@ class JobChangeRepository implements IJobChangeRepository
     }
 
     /**
+     * IDを引数から取得し、そのIDから転職事由を読み取り、転職事由エンティティを返す。
+     * @param int $id 転職事由ID。
+     * @return JobChangeEntity | false 引数で与えられたIDに紐づく転職事由エンティティ。
+     *                                 存在しないIDの場合は、falseが返る。
+     */
+    public function readJobChangeFromId(int $id)
+    {
+        $sql = 'select * from job_change where user_id = :user_id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':user_id', $id);
+        $stmt->execute();
+
+        return $stmt->rowCount() ? new JobChangeEntity($stmt->fetch()) : false;
+    }
+
+    /**
+     * 全ての転職事由を取得する。
+     * @return array DBに登録されている全ての転職事由エンティティが含まれた配列。
+     */
+    public function readAllJobChange(): array
+    {
+        $sql = 'select * from job_change;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        $jobChanges = [];
+        foreach ($stmt->fetchAll() as $jobChange) {
+            $jobChanges[] = new JobChangeEntity($jobChange);
+        }
+
+        return $jobChanges;
+    }
+
+    /**
      * 転職事由エンティティを引数から取得し、その転職事由をDBから削除する。
      * @param JobChangeEntity $jobChangeEntity 削除する転職事由。
      * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
