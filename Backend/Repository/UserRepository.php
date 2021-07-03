@@ -62,7 +62,7 @@ class UserRepository implements IUserRepository
      * @return UserEntity | false 引数で与えられたIDに紐づくユーザーエンティティ。
      *                            存在しないIDの場合は、falseが返る。
      */
-    public function readUserFromID(int $id)
+    public function readUserFromId(int $id)
     {
         $sql = 'select * from user where id = :id';
         $stmt = $this->pdo->prepare($sql);

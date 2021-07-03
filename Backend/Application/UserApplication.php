@@ -38,9 +38,9 @@ class UserApplication
      * @return UserEntity | false 引数で与えられたIDに紐づくユーザーエンティティ。
      *                            存在しないメールアドレスの場合は、falseが返る。
      */
-    public function readUserFromID(int $id)
+    public function readUserFromId(int $id)
     {
-        return $this->userRepository->readUserFromID($id);
+        return $this->userRepository->readUserFromId($id);
     }
 
     /**

@@ -79,7 +79,7 @@ class TestUserApplication extends TestCase
         $user['password'] = 'password';
         $this->userApplication->createUser($user);
 
-        $userEntity = $this->userApplication->readUserFromID($user['id']);
+        $userEntity = $this->userApplication->readUserFromId($user['id']);
         $this->assertTrue(password_verify('password', $userEntity->getPassword()));
 
         $this->userApplication->deleteUser($this->user);
@@ -88,10 +88,10 @@ class TestUserApplication extends TestCase
     /**
      * IDからユーザーを取得する。
      */
-    public function testReadUserFromID(): void
+    public function testReadUserFromId(): void
     {
         $this->userApplication->createUser($this->user);
-        $userEntity = $this->userApplication->readUserFromID($this->user['id']);
+        $userEntity = $this->userApplication->readUserFromId($this->user['id']);
 
         $this->assertSame($userEntity->getId(), (string)$this->user['id']);
 
@@ -160,7 +160,7 @@ class TestUserApplication extends TestCase
     /**
      * IDが最大のユーザーを削除する。
      */
-    public function testDeleteMaxIDUser(): void
+    public function testDeleteMaxIdUser(): void
     {
         $this->userApplication->createUser([]);
 
