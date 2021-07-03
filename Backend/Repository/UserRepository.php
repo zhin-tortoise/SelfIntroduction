@@ -10,7 +10,7 @@ require_once(dirname(__FILE__) . '/../domain/UserEntity.php');
 
 class UserRepository implements IUserRepository
 {
-    const EXISTS_MAIL_CODE = '99998';
+    const EXISTS_MAIL_CODE = '99998'; // 存在するメールアドレスの場合のエラーコード
     private PDO $pdo; // DBアクセスを行うPDOクラス。
 
     /**
@@ -60,7 +60,7 @@ class UserRepository implements IUserRepository
      * IDを引数から取得し、そのIDからユーザーを読み取り、ユーザーエンティティを返す。
      * @param int $id ユーザーID。
      * @return UserEntity | false 引数で与えられたIDに紐づくユーザーエンティティ。
-     *                            存在しないメールアドレスの場合は、falseが返る。
+     *                            存在しないIDの場合は、falseが返る。
      */
     public function readUserFromID(int $id)
     {

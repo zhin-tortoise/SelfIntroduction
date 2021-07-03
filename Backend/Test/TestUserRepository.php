@@ -12,9 +12,9 @@ require_once(dirname(__FILE__) . '/../Domain/UserEntity.php');
 
 class TestUserRepository extends TestCase
 {
-    const SUCCESS_CODE = '00000';
-    const EXISTS_ID_CODE = '23000';
-    const EXISTS_MAIL_CODE = '99998';
+    const SUCCESS_CODE = '00000'; // DB操作の成功時のエラーコード
+    const EXISTS_ID_CODE = '23000'; // 既にIDが存在する場合のエラーコード
+    const EXISTS_MAIL_CODE = '99998'; // 既にメールアドレスが存在する場合のエラーコード
 
     private int $id = 100; // ユーザーID
     private string $name = 'testUser'; // ユーザー名
@@ -28,7 +28,7 @@ class TestUserRepository extends TestCase
     private string $profile = 'テスト用のプロフィール。'; // プロフィール
     private array $user; // ユーザーエンティティ作成用の配列
 
-    private UserRepository $userRepository;
+    private UserRepository $userRepository; // ユーザーリポジトリ
 
     /**
      * ユーザーエンティティ作成用の配列を用意する。

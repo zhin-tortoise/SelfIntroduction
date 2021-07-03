@@ -11,7 +11,7 @@ require_once(dirname(__FILE__) . '/../repository/MysqlRepository.php');
 
 class UserApplication
 {
-    private $userRepository;
+    private $userRepository; // ユーザーリポジトリ
 
     public function __construct()
     {
