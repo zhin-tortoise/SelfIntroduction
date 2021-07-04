@@ -68,6 +68,7 @@ class TestJobChangeRepository extends TestCase
     {
         $jobChangeEntity = new JobChangeEntity($this->jobChange);
         $errorCode = $this->jobChangeRepository->createJobChange($jobChangeEntity);
+
         $this->assertSame($errorCode, self::SUCCESS_CODE);
     }
 
@@ -105,6 +106,30 @@ class TestJobChangeRepository extends TestCase
         $jobChanges = $this->jobChangeRepository->readAllJobChange();
 
         $this->assertFalse(empty($jobChanges));
+    }
+
+    /**
+     * 転職事由エンティティを更新する。
+     */
+    public function testUpdateJobChange(): void
+    {
+        $jobChangeEntity = new JobChangeEntity($this->jobChange);
+        $this->jobChangeRepository->createJobChange($jobChangeEntity);
+
+        $jobChange = $this->jobChange;
+        $jobChange['reason'] = '更新用の転職理由。';
+        $jobChange['motivation'] = '更新用の志望動機。';
+        $jobChange['experience'] = '更新用の活かせる経験。';
+
+        $updateJobChange = new JobChangeEntity($jobChange);
+        $this->jobChangeRepository->updateJobChange($updateJobChange);
+        $dbUpdateJobChangeEntity = $this->jobChangeRepository->readJobChangeFromUserId($jobChange['userId']);
+
+        $this->assertSame($dbUpdateJobChangeEntity->getId(), (string)$jobChange['id']);
+        $this->assertSame($dbUpdateJobChangeEntity->getUserId(), $jobChange['userId']);
+        $this->assertSame($dbUpdateJobChangeEntity->getReason(), $jobChange['reason']);
+        $this->assertSame($dbUpdateJobChangeEntity->getMotivation(), $jobChange['motivation']);
+        $this->assertSame($dbUpdateJobChangeEntity->getExperience(), $jobChange['experience']);
     }
 
     /**
