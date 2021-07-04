@@ -87,6 +87,22 @@ class TestJobChangeApplication extends TestCase
     }
 
     /**
+     * 転職事由を更新する。
+     */
+    public function testUpdateJobChange(): void
+    {
+        $this->jobChangeApplication->createJobChange($this->jobChange);
+
+        $jobChange = $this->jobChange;
+        $jobChange['reason'] = '更新用の転職理由。';
+        $jobChange['motivation'] = '更新用の志望動機。';
+        $jobChange['experience'] = '更新用の活かせる経験。';
+        $errorCode = $this->jobChangeApplication->updateJobChange($jobChange);
+
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
+    }
+
+    /**
      * 転職事由を削除する。
      */
     public function testDeleteJobChange(): void

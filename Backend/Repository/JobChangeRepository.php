@@ -81,6 +81,32 @@ class JobChangeRepository implements IJobChangeRepository
     }
 
     /**
+     * 転職事由エンティティを引数から取得し、その転職事由をDBに更新する。
+     * @param JobChangeEntity $jobChangeEntity 更新する転職事由。
+     * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
+     */
+    public function updateJobChange(JobChangeEntity $jobChangeEntity): string
+    {
+        $sql = 'update jobChange set userId = :userId, reason = :reason, ';
+        $sql .= 'motivation = :motivation, experience = :experience ';
+        $sql .= 'where id = :id;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $jobChangeEntity->getId());
+        $stmt->bindValue(':userId', $jobChangeEntity->getUserId());
+        $stmt->bindValue(':reason', $jobChangeEntity->getReason());
+        $stmt->bindValue(':motivation', $jobChangeEntity->getMotivation());
+        $stmt->bindValue(':experience', $jobChangeEntity->getExperience());
+
+        try {
+            $stmt->execute();
+        } catch (Exception $e) {
+            return $e->getCode();
+        }
+
+        return $stmt->errorCode();
+    }
+
+    /**
      * 転職事由エンティティを引数から取得し、その転職事由をDBから削除する。
      * @param JobChangeEntity $jobChangeEntity 削除する転職事由。
      * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。

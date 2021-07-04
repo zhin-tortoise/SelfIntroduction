@@ -53,6 +53,18 @@ class JobChangeApplication
     }
 
     /**
+     * 転職事由を更新する。
+     * @param array $jobChange 転職事由の配列。
+     * @return string エラーコード。
+     */
+    public function updateJobChange(array $jobChange): string
+    {
+        $jobChangeEntity = new JobChangeEntity($jobChange);
+
+        return $this->jobChangeRepository->updateJobChange($jobChangeEntity);
+    }
+
+    /**
      * 転職事由を削除する。
      * @param array $jobChange 転職事由の配列。
      * @return string エラーコード。
