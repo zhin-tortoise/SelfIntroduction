@@ -17,7 +17,7 @@ class TestJobChangeRepository extends TestCase
     const SUCCESS_CODE = '00000'; // リポジトリから返される成功時のステータスコード。
 
     private int $id = 100; // 転職ID
-    private int $userId = 100; // ユーザーID
+    private int $userId = 1000; // ユーザーID
     private string $reason = '転職理由。'; // 転職理由
     private string $motivation = '志望動機。'; // 志望動機
     private string $experience = '活かせる経験。'; // 活かせる経験
@@ -90,7 +90,7 @@ class TestJobChangeRepository extends TestCase
     {
         $jobChangeEntity = new JobChangeEntity($this->jobChange);
         $this->jobChangeRepository->createJobChange($jobChangeEntity);
-        $dbJobChangeEntity = $this->jobChangeRepository->readJobChangeFromId($this->jobChange['id']);
+        $dbJobChangeEntity = $this->jobChangeRepository->readJobChangeFromUserId($this->jobChange['userId']);
 
         $this->assertSame($dbJobChangeEntity->getId(), (string)$this->jobChange['id']);
     }

@@ -27,12 +27,12 @@ class JobChangeRepository implements IJobChangeRepository
      */
     public function createJobChange(JobChangeEntity $jobChangeEntity): string
     {
-        $sql = 'insert into job_change values ( ';
-        $sql .= ':id, :user_id, :reason, :motivation, :experience ';
+        $sql = 'insert into jobChange values ( ';
+        $sql .= ':id, :userId, :reason, :motivation, :experience ';
         $sql .= ');';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $jobChangeEntity->getId());
-        $stmt->bindValue(':user_id', $jobChangeEntity->getUserId());
+        $stmt->bindValue(':userId', $jobChangeEntity->getUserId());
         $stmt->bindValue(':reason', $jobChangeEntity->getReason());
         $stmt->bindValue(':motivation', $jobChangeEntity->getMotivation());
         $stmt->bindValue(':experience', $jobChangeEntity->getExperience());
@@ -47,16 +47,16 @@ class JobChangeRepository implements IJobChangeRepository
     }
 
     /**
-     * IDを引数から取得し、そのIDから転職事由を読み取り、転職事由エンティティを返す。
-     * @param int $id 転職事由ID。
-     * @return JobChangeEntity | false 引数で与えられたIDに紐づく転職事由エンティティ。
+     * ユーザーIDを引数から取得し、そのIDから転職事由を読み取り、転職事由エンティティを返す。
+     * @param int $userId ユーザーID。
+     * @return JobChangeEntity | false 引数で与えられたユーザーIDに紐づく転職事由エンティティ。
      *                                 存在しないIDの場合は、falseが返る。
      */
-    public function readJobChangeFromId(int $id)
+    public function readJobChangeFromUserId(int $userId)
     {
-        $sql = 'select * from job_change where user_id = :user_id';
+        $sql = 'select * from jobChange where userId = :userId';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':user_id', $id);
+        $stmt->bindValue(':userId', $userId);
         $stmt->execute();
 
         return $stmt->rowCount() ? new JobChangeEntity($stmt->fetch()) : false;
@@ -68,7 +68,7 @@ class JobChangeRepository implements IJobChangeRepository
      */
     public function readAllJobChange(): array
     {
-        $sql = 'select * from job_change;';
+        $sql = 'select * from jobChange;';
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
 
@@ -87,7 +87,7 @@ class JobChangeRepository implements IJobChangeRepository
      */
     public function deleteJobChange(JobChangeEntity $jobChangeEntity): string
     {
-        $sql = 'delete from job_change where id = :id;';
+        $sql = 'delete from jobChange where id = :id;';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $jobChangeEntity->getId());
         $stmt->execute();

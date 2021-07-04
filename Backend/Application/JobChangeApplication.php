@@ -33,14 +33,14 @@ class JobChangeApplication
     }
 
     /**
-     * IDから転職事由を取得する。
-     * @param int $id 取得する転職事由のID。
-     * @return UserEntity | false 引数で与えられたIDに紐づく転職事由エンティティ。
+     * ユーザーIDから転職事由を取得する。
+     * @param int $userId 取得するユーザーID。
+     * @return UserEntity | false 引数で与えられたユーザーIDに紐づく転職事由エンティティ。
      *                            存在しないIDの場合は、falseが返る。
      */
-    public function readJobChangeFromId(int $id)
+    public function readJobChangeFromUserId(int $userId)
     {
-        return $this->jobChangeRepository->readJobChangeFromId($id);
+        return $this->jobChangeRepository->readJobChangeFromUserId($userId);
     }
 
     /**
