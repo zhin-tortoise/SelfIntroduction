@@ -23,10 +23,10 @@ create table jobChange (
 create table career (
     id int auto_increment primary key,
     userId int,
-    start date,
-    finish date,
+    startDate date,
+    finishDate date,
     overview varchar(255),
-    explain_text text,
+    explainText text,
     foreign key (userId) references user(id) on delete cascade
 );
 

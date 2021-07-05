@@ -10,3 +10,8 @@ REM 転職事由のテスト
 php C:/php/phpunit.phar Backend/Test/TestJobChangeEntity.php
 php C:/php/phpunit.phar Backend/Test/TestJobChangeRepository.php
 php C:/php/phpunit.phar Backend/Test/TestJobChangeApplication.php
+
+REM 経歴のテスト
+php C:/php/phpunit.phar Backend/Test/TestCareerEntity.php
+php C:/php/phpunit.phar Backend/Test/TestCareerRepository.php
+php C:/php/phpunit.phar Backend/Test/TestCareerApplication.php
