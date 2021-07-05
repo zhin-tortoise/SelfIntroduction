@@ -1,8 +1,8 @@
 <?php
 
-require_once(dirname(__FILE__) . '/../domain/UserEntity.php');
-require_once(dirname(__FILE__) . '/../repository/UserRepository.php');
-require_once(dirname(__FILE__) . '/../repository/MysqlRepository.php');
+require_once(dirname(__FILE__) . '/../Domain/UserEntity.php');
+require_once(dirname(__FILE__) . '/../Repository/UserRepository.php');
+require_once(dirname(__FILE__) . '/../Repository/MysqlRepository.php');
 
 /**
  * ユーザーのアプリケーションクラス。
