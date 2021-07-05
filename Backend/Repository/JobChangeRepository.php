@@ -6,7 +6,7 @@
  */
 
 require_once(dirname(__FILE__) . '/IJobChangeRepository.php');
-require_once(dirname(__FILE__) . '/../domain/JobChangeEntity.php');
+require_once(dirname(__FILE__) . '/../Domain/JobChangeEntity.php');
 
 class JobChangeRepository implements IJobChangeRepository
 {
