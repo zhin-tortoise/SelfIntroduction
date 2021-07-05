@@ -10,12 +10,12 @@ require_once(dirname(__FILE__) . '/../Domain/JobChangeEntity.php');
 
 class TestJobChangeEntity extends TestCase
 {
-    private $id = 1;
-    private int $userId = 1;
-    private string $reason = '転職理由。';
-    private string $motivation = '志望動機。';
-    private string $experience = '活かせる経験。';
-    private array $jobChange;
+    private $id = 1; // 転職ID
+    private int $userId = 1; // ユーザーID
+    private string $reason = '転職理由。'; // 転職理由
+    private string $motivation = '志望動機。'; // 志望動機
+    private string $experience = '活かせる経験。'; // 活かせる経験
+    private array $jobChange; // 転職事由エンティティ作成用の配列
 
     /**
      * 転職事由エンティティ作成用の配列を用意する。
