@@ -85,9 +85,9 @@ class TestJobChangeRepository extends TestCase
     }
 
     /**
-     * IDから転職事由エンティティを取得する。
+     * ユーザーIDから転職事由エンティティを取得する。
      */
-    public function testReadJobChangeFromId(): void
+    public function testReadJobChangeFromUserId(): void
     {
         $jobChangeEntity = new JobChangeEntity($this->jobChange);
         $this->jobChangeRepository->createJobChange($jobChangeEntity);
