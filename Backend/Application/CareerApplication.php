@@ -31,4 +31,17 @@ class CareerApplication
 
         return $errorCode;
     }
+
+    /**
+     * 経歴を削除する。
+     * @param array $career 経歴の配列。
+     * @return string エラーコード。
+     */
+    public function deleteCareer(array $career): string
+    {
+        $careerEntity = new CareerEntity($career);
+        $errorCode = $this->careerRepository->deleteCareer($careerEntity);
+
+        return $errorCode;
+    }
 }

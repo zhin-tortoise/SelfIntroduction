@@ -85,4 +85,16 @@ class TestCareerRepository extends TestCase
 
         $this->assertSame($errorCode, self::SUCCESS_CODE);
     }
+
+    /**
+     * 経歴エンティティをDBから削除する。
+     */
+    public function testDeleteCareer(): void
+    {
+        $careerEntity = new CareerEntity($this->career);
+        $this->careerRepository->createCareer($careerEntity);
+
+        $errorCode = $this->careerRepository->deleteCareer($careerEntity);
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
+    }
 }

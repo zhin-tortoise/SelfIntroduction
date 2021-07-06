@@ -65,4 +65,13 @@ class TestCareerApplication extends TestCase
         $errorCode = $this->careerApplication->createCareer($this->career);
         $this->assertSame($errorCode, self::SUCCESS_CODE);
     }
+
+    /**
+     * 経歴を削除する。
+     */
+    public function testDeleteCareer(): void
+    {
+        $errorCode = $this->careerApplication->deleteCareer($this->career);
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
+    }
 }

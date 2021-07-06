@@ -46,4 +46,19 @@ class CareerRepository implements ICareerRepository
 
         return $stmt->errorCode();
     }
+
+    /**
+     * 経歴エンティティを引数から取得し、その経歴をDBから削除する。
+     * @param CareerEntity $careerEntity 削除する経歴。
+     * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
+     */
+    public function deleteCareer(CareerEntity $careerEntity): string
+    {
+        $sql = 'delete from career where id = :id;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $careerEntity->getId());
+        $stmt->execute();
+
+        return $stmt->errorCode();
+    }
 }
