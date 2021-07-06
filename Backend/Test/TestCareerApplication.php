@@ -67,6 +67,28 @@ class TestCareerApplication extends TestCase
     }
 
     /**
+     * ユーザーIDから経歴を取得する。
+     */
+    public function testReadCareerFromUserId(): void
+    {
+        $this->careerApplication->createCareer($this->career);
+        $careers = $this->careerApplication->readCareerFromUserId($this->career['userId']);
+
+        $this->assertFalse(empty($careers));
+    }
+
+    /**
+     * 全ての経歴を取得する。
+     */
+    public function testReadAllCareer(): void
+    {
+        $this->careerApplication->createCareer($this->career);
+        $careers = $this->careerApplication->readAllCareer();
+
+        $this->assertFalse(empty($careers));
+    }
+
+    /**
      * 経歴を削除する。
      */
     public function testDeleteCareer(): void

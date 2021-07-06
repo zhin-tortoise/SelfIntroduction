@@ -33,6 +33,26 @@ class CareerApplication
     }
 
     /**
+     * ユーザーIDから経歴を取得する。
+     * @param int $userId 取得するユーザーID。
+     * @return UserEntity | false 引数で与えられたユーザーIDに紐づく経歴エンティティ。
+     *                            存在しないIDの場合は、falseが返る。
+     */
+    public function readCareerFromUserId(int $userId): array
+    {
+        return $this->careerRepository->readCareerFromUserId($userId);
+    }
+
+    /**
+     * 全ての経歴を取得する。
+     * @return array DBに登録されている全ての経歴。
+     */
+    public function readAllCareer()
+    {
+        return $this->careerRepository->readAllCareer();
+    }
+
+    /**
      * 経歴を削除する。
      * @param array $career 経歴の配列。
      * @return string エラーコード。
