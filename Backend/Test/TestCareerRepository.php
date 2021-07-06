@@ -87,6 +87,30 @@ class TestCareerRepository extends TestCase
     }
 
     /**
+     * ユーザーIDから経歴エンティティを取得する。
+     */
+    public function testReadCareerFromUserId(): void
+    {
+        $careerEntity = new CareerEntity($this->career);
+        $this->careerRepository->createCareer($careerEntity);
+        $careers = $this->careerRepository->readCareerFromUserId($this->career['userId']);
+
+        $this->assertFalse(empty($careers));
+    }
+
+    /**
+     * 全ての経歴エンティティを取得する。
+     */
+    public function testReadAllCareer(): void
+    {
+        $careerEntity = new CareerEntity($this->career);
+        $this->careerRepository->createCareer($careerEntity);
+        $careers = $this->careerRepository->readAllCareer();
+
+        $this->assertFalse(empty($careers));
+    }
+
+    /**
      * 経歴エンティティをDBから削除する。
      */
     public function testDeleteCareer(): void

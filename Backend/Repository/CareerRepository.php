@@ -48,6 +48,44 @@ class CareerRepository implements ICareerRepository
     }
 
     /**
+     * ユーザーIDを引数から取得し、そのIDから経歴を読み取り、経歴エンティティを返す。
+     * @param int $userId ユーザーID。
+     * @return CareerEntity | false 引数で与えられたユーザーIDに紐づく経歴エンティティ。
+     *                                 存在しないIDの場合は、falseが返る。
+     */
+    public function readCareerFromUserId(int $userId): array
+    {
+        $sql = 'select * from career where userId = :userId';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':userId', $userId);
+        $stmt->execute();
+
+        $careers = [];
+        foreach ($stmt->fetchAll() as $career) {
+            $careers[] = new CareerEntity($career);
+        }
+        return $careers;
+    }
+
+    /**
+     * 全ての経歴を取得する。
+     * @return array DBに登録されている全ての経歴エンティティが含まれた配列。
+     */
+    public function readAllCareer(): array
+    {
+        $sql = 'select * from career;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        $careers = [];
+        foreach ($stmt->fetchAll() as $career) {
+            $careers[] = new CareerEntity($career);
+        }
+
+        return $careers;
+    }
+
+    /**
      * 経歴エンティティを引数から取得し、その経歴をDBから削除する。
      * @param CareerEntity $careerEntity 削除する経歴。
      * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
