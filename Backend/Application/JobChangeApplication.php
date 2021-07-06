@@ -1,8 +1,8 @@
 <?php
 
-require_once(dirname(__FILE__) . '/../domain/JobChangeEntity.php');
+require_once(dirname(__FILE__) . '/../Domain/JobChangeEntity.php');
 require_once(dirname(__FILE__) . '/../Repository/JobChangeRepository.php');
-require_once(dirname(__FILE__) . '/../repository/MysqlRepository.php');
+require_once(dirname(__FILE__) . '/../Repository/MysqlRepository.php');
 
 /**
  * 転職事由のアプリケーションクラス。
