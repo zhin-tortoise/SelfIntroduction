@@ -65,9 +65,9 @@ class TestJobChangeApplication extends TestCase
     }
 
     /**
-     * IDから転職事由を取得する。
+     * ユーザーIDから転職事由を取得する。
      */
-    public function testReadJobChangeFromId(): void
+    public function testReadJobChangeFromUserId(): void
     {
         $this->jobChangeApplication->createJobChange($this->jobChange);
         $jobChangeEntity = $this->jobChangeApplication->readJobChangeFromUserId($this->jobChange['userId']);
