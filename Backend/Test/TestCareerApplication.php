@@ -89,6 +89,23 @@ class TestCareerApplication extends TestCase
     }
 
     /**
+     * 経歴を更新する。
+     */
+    public function testUpdateCareer(): void
+    {
+        $this->careerApplication->createCareer($this->career);
+
+        $career = $this->career;
+        $career['startDate'] = '2021/07/07';
+        $career['finishDate'] = '2021/07/08';
+        $career['overview'] = '更新用の概要';
+        $career['explainText'] = '更新用の説明';
+        $errorCode = $this->careerApplication->updateCareer($career);
+
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
+    }
+
+    /**
      * 経歴を削除する。
      */
     public function testDeleteCareer(): void

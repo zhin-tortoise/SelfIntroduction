@@ -53,6 +53,18 @@ class CareerApplication
     }
 
     /**
+     * 経歴を更新する。
+     * @param array $career 経歴の配列。
+     * @return string エラーコード。
+     */
+    public function updateCareer(array $career): string
+    {
+        $careerEntity = new CareerEntity($career);
+
+        return $this->careerRepository->updateCareer($careerEntity);
+    }
+
+    /**
      * 経歴を削除する。
      * @param array $career 経歴の配列。
      * @return string エラーコード。

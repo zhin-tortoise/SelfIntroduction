@@ -48,10 +48,25 @@ class CareerRepository implements ICareerRepository
     }
 
     /**
+     * 経歴IDを引数から取得し、そのIDから経歴を読み取り、経歴エンティティを返す。
+     * @param int $id 経歴ID。
+     * @return CareerEntity | false 引数で与えられた経歴IDに紐づく経歴エンティティ。
+     *                              存在しないIDの場合は、falseが返る。
+     */
+    public function readCareerFromId(int $id)
+    {
+        $sql = 'select * from career where id = :id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        return $stmt->rowCount() ? new CareerEntity($stmt->fetch()) : false;
+    }
+
+    /**
      * ユーザーIDを引数から取得し、そのIDから経歴を読み取り、経歴エンティティを返す。
      * @param int $userId ユーザーID。
-     * @return CareerEntity | false 引数で与えられたユーザーIDに紐づく経歴エンティティ。
-     *                                 存在しないIDの場合は、falseが返る。
+     * @return array 引数で与えられたユーザーIDに紐づく経歴エンティティの配列。
      */
     public function readCareerFromUserId(int $userId): array
     {
@@ -83,6 +98,34 @@ class CareerRepository implements ICareerRepository
         }
 
         return $careers;
+    }
+
+    /**
+     * 経歴エンティティを引数から取得し、その経歴をDBに更新する。
+     * @param CareerEntity $careerEntity 更新する経歴。
+     * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
+     */
+    public function updateCareer(CareerEntity $careerEntity): string
+    {
+        $sql = 'update career set userId = :userId, startDate = :startDate, finishDate = :finishDate, ';
+        $sql .= 'overview = :overview, explainText = :explainText ';
+        $sql .= 'where id = :id;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $careerEntity->getId());
+        $stmt->bindValue(':userId', $careerEntity->getUserId());
+        $stmt->bindValue(':startDate', $careerEntity->getStartDate());
+        $stmt->bindValue(':finishDate', $careerEntity->getFinishDate());
+        $stmt->bindValue(':overview', $careerEntity->getOverview());
+        $stmt->bindValue(':explainText', $careerEntity->getExplainText());
+        $stmt->execute();
+
+        try {
+            $stmt->execute();
+        } catch (Exception $e) {
+            return $e->getCode();
+        }
+
+        return $stmt->errorCode();
     }
 
     /**

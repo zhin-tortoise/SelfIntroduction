@@ -87,6 +87,18 @@ class TestCareerRepository extends TestCase
     }
 
     /**
+     * IDから経歴エンティティを取得する。
+     */
+    public function testReadCareerFromId(): void
+    {
+        $careerEntity = new CareerEntity($this->career);
+        $this->careerRepository->createCareer($careerEntity);
+        $dbCareerEntity = $this->careerRepository->readCareerFromId($this->career['id']);
+
+        $this->assertSame($dbCareerEntity->getId(), (string)$this->career['id']);
+    }
+
+    /**
      * ユーザーIDから経歴エンティティを取得する。
      */
     public function testReadCareerFromUserId(): void
@@ -108,6 +120,32 @@ class TestCareerRepository extends TestCase
         $careers = $this->careerRepository->readAllCareer();
 
         $this->assertFalse(empty($careers));
+    }
+
+    /**
+     * 経歴エンティティを更新する。
+     */
+    public function testUpdateCareer(): void
+    {
+        $careerEntity = new CareerEntity($this->career);
+        $this->careerRepository->createCareer($careerEntity);
+
+        $career = $this->career;
+        $career['startDate'] = '2021/07/06';
+        $career['finishDate'] = '2021/07/07';
+        $career['overview'] = '更新用の概要。';
+        $career['explainText'] = '更新用の説明。';
+
+        $updateCareer = new CareerEntity($career);
+        $this->careerRepository->updateCareer($updateCareer);
+        $dbUpdateCareerEntity = $this->careerRepository->readCareerFromId($career['id']);
+
+        $this->assertSame($dbUpdateCareerEntity->getId(), (string)$career['id']);
+        $this->assertSame($dbUpdateCareerEntity->getUserId(), $career['userId']);
+        $this->assertSame($dbUpdateCareerEntity->getStartDate(), str_replace('/', '-', $career['startDate']));
+        $this->assertSame($dbUpdateCareerEntity->getFinishDate(), str_replace('/', '-', $career['finishDate']));
+        $this->assertSame($dbUpdateCareerEntity->getOverview(), $career['overview']);
+        $this->assertSame($dbUpdateCareerEntity->getExplainText(), $career['explainText']);
     }
 
     /**
