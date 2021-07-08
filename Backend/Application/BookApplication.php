@@ -31,4 +31,17 @@ class BookApplication
 
         return $errorCode;
     }
+
+    /**
+     * 書籍を削除する。
+     * @param array $book 書籍の配列。
+     * @return string エラーコード。
+     */
+    public function deleteBook(array $book): string
+    {
+        $bookEntity = new BookEntity($book);
+        $errorCode = $this->bookRepository->deleteBook($bookEntity);
+
+        return $errorCode;
+    }
 }

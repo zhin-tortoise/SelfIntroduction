@@ -63,4 +63,13 @@ class TestBookApplication extends TestCase
         $errorCode = $this->bookApplication->createBook($this->book);
         $this->assertSame($errorCode, self::SUCCESS_CODE);
     }
+
+    /**
+     * 書籍を削除する。
+     */
+    public function testDeleteBook(): void
+    {
+        $errorCode = $this->bookApplication->deleteBook($this->book);
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
+    }
 }
