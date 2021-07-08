@@ -84,4 +84,16 @@ class TestBookRepository extends TestCase
 
         $this->assertSame($errorCode, self::SUCCESS_CODE);
     }
+
+    /**
+     * 書籍エンティティをDBから削除する。
+     */
+    public function testDeleteBook(): void
+    {
+        $bookEntity = new BookEntity($this->book);
+        $this->bookRepository->createBook($bookEntity);
+
+        $errorCode = $this->bookRepository->deleteBook($bookEntity);
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
+    }
 }
