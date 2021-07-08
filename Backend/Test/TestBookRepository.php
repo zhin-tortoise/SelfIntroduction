@@ -86,6 +86,42 @@ class TestBookRepository extends TestCase
     }
 
     /**
+     * IDから書籍エンティティを取得する。
+     */
+    public function testReadBookFromId(): void
+    {
+        $bookEntity = new BookEntity($this->book);
+        $this->bookRepository->createBook($bookEntity);
+        $dbBookEntity = $this->bookRepository->readBookFromId($this->book['id']);
+
+        $this->assertSame($dbBookEntity->getId(), (string)$this->book['id']);
+    }
+
+    /**
+     * ユーザーIDから書籍エンティティを取得する。
+     */
+    public function testReadBookFromUserId(): void
+    {
+        $bookEntity = new BookEntity($this->book);
+        $this->bookRepository->createBook($bookEntity);
+        $books = $this->bookRepository->readBookFromUserId($this->book['userId']);
+
+        $this->assertFalse(empty($books));
+    }
+
+    /**
+     * 全ての書籍エンティティを取得する。
+     */
+    public function testReadAllBook(): void
+    {
+        $bookEntity = new BookEntity($this->book);
+        $this->bookRepository->createBook($bookEntity);
+        $books = $this->bookRepository->readAllBook();
+
+        $this->assertFalse(empty($books));
+    }
+
+    /**
      * 書籍エンティティをDBから削除する。
      */
     public function testDeleteBook(): void
