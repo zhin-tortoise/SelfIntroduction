@@ -10,5 +10,6 @@ interface IBookRepository
     public function readBookFromId(int $id);
     public function readBookFromUserId(int $userId): array;
     public function readAllBook(): array;
+    public function updateBook(BookEntity $bookEntity): string;
     public function deleteBook(BookEntity $bookEntity): string;
 }

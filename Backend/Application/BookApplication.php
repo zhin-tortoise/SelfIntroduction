@@ -53,6 +53,18 @@ class BookApplication
     }
 
     /**
+     * 書籍を更新する。
+     * @param array $book 書籍の配列。
+     * @return string エラーコード。
+     */
+    public function updateBook(array $book): string
+    {
+        $bookEntity = new BookEntity($book);
+
+        return $this->bookRepository->updateBook($bookEntity);
+    }
+
+    /**
      * 書籍を削除する。
      * @param array $book 書籍の配列。
      * @return string エラーコード。

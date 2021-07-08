@@ -87,6 +87,22 @@ class TestBookApplication extends TestCase
     }
 
     /**
+     * 書籍を更新する。
+     */
+    public function testUpdateBook(): void
+    {
+        $this->bookApplication->createBook($this->book);
+
+        $book = $this->book;
+        $book['title'] = '更新用の題名';
+        $book['explainText'] = '更新用の説明';
+        $book['picture'] = '../update.jpg';
+        $errorCode = $this->bookApplication->updateBook($book);
+
+        $this->assertSame($errorCode, self::SUCCESS_CODE);
+    }
+
+    /**
      * 書籍を削除する。
      */
     public function testDeleteBook(): void
