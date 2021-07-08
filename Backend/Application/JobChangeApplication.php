@@ -47,7 +47,7 @@ class JobChangeApplication
      * 全ての転職事由を取得する。
      * @return array DBに登録されている全ての転職事由。
      */
-    public function readAllJobChange()
+    public function readAllJobChange(): array
     {
         return $this->jobChangeRepository->readAllJobChange();
     }

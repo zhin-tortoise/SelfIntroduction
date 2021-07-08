@@ -47,7 +47,7 @@ class CareerApplication
      * 全ての経歴を取得する。
      * @return array DBに登録されている全ての経歴。
      */
-    public function readAllCareer()
+    public function readAllCareer(): array
     {
         return $this->careerRepository->readAllCareer();
     }
