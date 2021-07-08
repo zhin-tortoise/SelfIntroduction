@@ -30,6 +30,7 @@ class TestCareerRepository extends TestCase
     /**
      * 経歴エンティティ作成用の配列を用意する。
      * 経歴のリポジトリを用意する。
+     * ユーザーを作成する。
      */
     public function setUp(): void
     {
