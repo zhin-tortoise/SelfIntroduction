@@ -122,6 +122,30 @@ class TestBookRepository extends TestCase
     }
 
     /**
+     * 書籍エンティティを更新する。
+     */
+    public function testUpdateBook(): void
+    {
+        $bookEntity = new BookEntity($this->book);
+        $this->bookRepository->createBook($bookEntity);
+
+        $book = $this->book;
+        $book['title'] = '更新用の題名';
+        $book['explainText'] = '更新用の説明';
+        $book['picture'] = '../update/jpg';
+
+        $updateBook = new BookEntity($book);
+        $this->bookRepository->updateBook($updateBook);
+        $dbUpdateBookEntity = $this->bookRepository->readBookFromId($book['id']);
+
+        $this->assertSame($dbUpdateBookEntity->getId(), (string)$book['id']);
+        $this->assertSame($dbUpdateBookEntity->getUserId(), $book['userId']);
+        $this->assertSame($dbUpdateBookEntity->getTitle(), $book['title']);
+        $this->assertSame($dbUpdateBookEntity->getExplainText(), $book['explainText']);
+        $this->assertSame($dbUpdateBookEntity->getPicture(), $book['picture']);
+    }
+
+    /**
      * 書籍エンティティをDBから削除する。
      */
     public function testDeleteBook(): void

@@ -34,7 +34,7 @@ create table book (
     id int auto_increment primary key,
     userId int,
     title varchar(255),
-    explain_text text,
+    explainText text,
     picture varchar(255),
     foreign key (userId) references user(id) on delete cascade
 );

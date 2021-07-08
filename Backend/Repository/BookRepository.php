@@ -99,6 +99,32 @@ class BookRepository implements IBookRepository
     }
 
     /**
+     * 書籍エンティティを引数から取得し、その書籍をDBに更新する。
+     * @param BookEntity $bookEntity 更新する書籍。
+     * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
+     */
+    public function updateBook(BookEntity $bookEntity): string
+    {
+        $sql = 'update book set userId = :userId, title = :title, ';
+        $sql .= 'explainText = :explainText, picture = :picture ';
+        $sql .= 'where id = :id;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $bookEntity->getId());
+        $stmt->bindValue(':userId', $bookEntity->getUserId());
+        $stmt->bindValue(':title', $bookEntity->getTitle());
+        $stmt->bindValue(':explainText', $bookEntity->getExplainText());
+        $stmt->bindValue(':picture', $bookEntity->getPicture());
+
+        try {
+            $stmt->execute();
+        } catch (Exception $e) {
+            return $e->getCode();
+        }
+
+        return $stmt->errorCode();
+    }
+
+    /**
      * 書籍エンティティを引数から取得し、その書籍をDBから削除する。
      * @param BookEntity $bookEntity 削除する書籍。
      * @return string 成功時なら00000のエラーコード。失敗時ならそれぞれの場合に対応したエラーコード。
