@@ -15,3 +15,8 @@ REM 経歴のテスト
 php C:/php/phpunit.phar Backend/Test/TestCareerEntity.php
 php C:/php/phpunit.phar Backend/Test/TestCareerRepository.php
 php C:/php/phpunit.phar Backend/Test/TestCareerApplication.php
+
+REM 書籍のテスト
+php C:/php/phpunit.phar Backend/Test/TestBookEntity.php
+php C:/php/phpunit.phar Backend/Test/TestBookRepository.php
+php C:/php/phpunit.phar Backend/Test/TestBookApplication.php
