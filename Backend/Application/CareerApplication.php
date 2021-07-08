@@ -35,8 +35,8 @@ class CareerApplication
     /**
      * ユーザーIDから経歴を取得する。
      * @param int $userId 取得するユーザーID。
-     * @return UserEntity | false 引数で与えられたユーザーIDに紐づく経歴エンティティ。
-     *                            存在しないIDの場合は、falseが返る。
+     * @return CareerEntity | false 引数で与えられたユーザーIDに紐づく経歴エンティティ。
+     *                              存在しないIDの場合は、falseが返る。
      */
     public function readCareerFromUserId(int $userId): array
     {
