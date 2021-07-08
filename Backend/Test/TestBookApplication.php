@@ -65,6 +65,28 @@ class TestBookApplication extends TestCase
     }
 
     /**
+     * ユーザーIDから書籍を取得する。
+     */
+    public function testReadBookFromUserId(): void
+    {
+        $this->bookApplication->createBook($this->book);
+        $books = $this->bookApplication->readBookFromUserId($this->book['userId']);
+
+        $this->assertFalse(empty($books));
+    }
+
+    /**
+     * 全ての書籍を取得する。
+     */
+    public function testReadAllBook(): void
+    {
+        $this->bookApplication->createBook($this->book);
+        $books = $this->bookApplication->readAllBook();
+
+        $this->assertFalse(empty($books));
+    }
+
+    /**
      * 書籍を削除する。
      */
     public function testDeleteBook(): void

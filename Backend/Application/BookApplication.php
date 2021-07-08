@@ -33,6 +33,26 @@ class BookApplication
     }
 
     /**
+     * ユーザーIDから書籍を取得する。
+     * @param int $userId 取得するユーザーID。
+     * @return BookEntity | false 引数で与えられたユーザーIDに紐づく書籍エンティティ。
+     *                            存在しないIDの場合は、falseが返る。
+     */
+    public function readBookFromUserId(int $userId): array
+    {
+        return $this->bookRepository->readBookFromUserId($userId);
+    }
+
+    /**
+     * 全ての書籍を取得する。
+     * @return array DBに登録されている全ての書籍。
+     */
+    public function readAllBook(): array
+    {
+        return $this->bookRepository->readAllBook();
+    }
+
+    /**
      * 書籍を削除する。
      * @param array $book 書籍の配列。
      * @return string エラーコード。
