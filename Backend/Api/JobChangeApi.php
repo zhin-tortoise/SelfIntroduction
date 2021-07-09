@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['type'] === 'create') {
     echo json_encode(['errorCode' => $errorCode]);
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // 参照の場合
-    $user = $jobChangeApi->readJobChangeFromUserId();
-    echo json_encode($user);
+    $jobChange = $jobChangeApi->readJobChangeFromUserId();
+    echo json_encode($jobChange);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['type'] === 'update') {
     // 更新の場合
     $errorCode = $jobChangeApi->updateJobChange($_POST);
