@@ -1,5 +1,9 @@
 REM 実行環境へのデプロイを行うバッチ。
 
+set API_PATH=D:\Apache24\htdocs\Backend\Api
+if not exist %API_PATH% mkdir %API_PATH%
+copy .\Backend\Api\* %API_PATH%
+
 set APPLICATION_PATH=D:\Apache24\htdocs\Backend\Application
 if not exist %APPLICATION_PATH% mkdir %APPLICATION_PATH%
 copy .\Backend\Application\* %APPLICATION_PATH%
