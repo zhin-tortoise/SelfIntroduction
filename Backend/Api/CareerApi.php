@@ -77,7 +77,7 @@ class CareerApi
     }
 
     /**
-     * 経歴IDを元に経歴を更新するメソッド。
+     * IDを元に経歴を更新するメソッド。
      * @return エラーコード。
      */
     public function updateCareer($post)
@@ -86,7 +86,7 @@ class CareerApi
     }
 
     /**
-     * 経歴IDを元に経歴を削除するメソッド。
+     * IDを元に経歴を削除するメソッド。
      * @return エラーコード。
      */
     public function deleteCareer($post)
