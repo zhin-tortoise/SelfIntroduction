@@ -1,0 +1,56 @@
+div#root-job_change {
+    width: 80%;
+    height: 100%;
+    left: 20%;
+}
+
+div#root-job_change-navigation {
+    width: 80%;
+    top: 15%;
+    left: 20%;
+}
+
+div#root-job_change-navigation-reason {
+    left: 0%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+div#root-job_change-navigation-reason:hover {
+    background-color: #eb6100;
+}
+
+div#root-job_change-navigation-motivation {
+    left: 20%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+div#root-job_change-navigation-motivation:hover {
+    background-color: #eb6100;
+}
+
+div#root-job_change-navigation-experience {
+    left: 40%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+div#root-job_change-navigation-experience:hover {
+    background-color: #eb6100;
+}
+
+hr#root-job_change-horizon {
+    width: 70%;
+    top: 20%;
+    left: 10%;
+}
+
+div.root-job_change-detail {
+    width: 70%;
+    height: 60%;
+    top: 30%;
+    left: 10%;
+    font-size: 20px;
+    overflow-y: auto;
+}

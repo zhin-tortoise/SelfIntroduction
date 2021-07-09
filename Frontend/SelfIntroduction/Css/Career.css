@@ -1,0 +1,85 @@
+div#root-career {
+    width: 80%;
+    height: 100%;
+    left: 20%;
+}
+
+div#root-career-list {
+    width: 30%;
+    height: 100%;
+}
+
+img#root-career-list-top_arrow {
+    width: 30%;
+    height: auto;
+    top: 20%;
+    left: 10%;
+    cursor: pointer;
+}
+
+div#root-career-list-overview1 {
+    top: 40%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+div#root-career-list-overview1:hover {
+    background-color: #eb6100;
+}
+
+div#root-career-list-overview2 {
+    top: 50%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+div#root-career-list-overview2:hover {
+    background-color: #eb6100;
+}
+
+div#root-career-list-overview3 {
+    top: 60%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+div#root-career-list-overview3:hover {
+    background-color: #eb6100;
+}
+
+img#root-career-list-bottom_arrow {
+    width: 30%;
+    height: auto;
+    top: 70%;
+    left: 10%;
+    cursor: pointer;
+}
+
+div#root-career-detail {
+    width: 60%;
+    height: 100%;
+    left: 30%;
+}
+
+div#root-career-detail-overview {
+    top: 10%;
+    font-size: 40px;
+}
+
+div#root-career-detail-date {
+    top: 25%;
+    font-size: 20px;
+}
+
+hr#root-career-detail-horizon {
+    width: 100%;
+    top: 32%;
+    left: 0%;
+}
+
+div#root-career-detail-explain {
+    height: 50%;
+    top: 40%;
+    font-size: 20px;
+    overflow-y: auto;
+}

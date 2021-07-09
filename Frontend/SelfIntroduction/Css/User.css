@@ -1,0 +1,85 @@
+div#root-user {
+    width: 80%;
+    height: 100%;
+    left: 20%;
+}
+
+img#root-user-picture {
+    width: 20%;
+    height: auto;
+    top: 20%;
+    left: 0;
+}
+
+div#root-user-name {
+    font-size: 50px;
+    top: 10%;
+    left: 30%;
+}
+
+div#root-user-birthday {
+    top: 25%;
+    left: 30%;
+}
+
+div#root-user-gender {
+    top: 25%;
+    left: 70%;
+}
+
+hr#root-user-horizon_top_navigation {
+    width: 60%;
+    top: 35%;
+    left: 30%;
+}
+
+div#root-user-navigation {
+    width: 70%;
+    top: 40%;
+    left: 30%;
+}
+
+div#root-user-navigation-background {
+    left: 15%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+div#root-user-navigation-background:hover {
+    background-color: #eb6100;
+}
+
+div#root-user-navigation-qualification {
+    left: 40%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+div#root-user-navigation-qualification:hover {
+    background-color: #eb6100;
+}
+
+div#root-user-navigation-profile {
+    left: 60%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+div#root-user-navigation-profile:hover {
+    background-color: #eb6100;
+}
+
+hr#root-user-horizon_bottom_navigation {
+    width: 60%;
+    top: 45%;
+    left: 30%;
+}
+
+div.root-user-detail {
+    width: 60%;
+    height: 40%;
+    top: 50%;
+    left: 30%;
+    font-size: 20px;
+    overflow-y: auto;
+}

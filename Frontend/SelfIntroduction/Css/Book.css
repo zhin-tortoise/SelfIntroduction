@@ -1,0 +1,87 @@
+/* 本 */
+
+div#root-book {
+    width: 80%;
+    height: 70%;
+    left: 20%;
+}
+
+img#root-book-picture {
+    width: auto;
+    height: 80%;
+    top: 10%;
+    left: 5%;
+}
+
+div#root-book-title {
+    width: 80%;
+    font-size: 36px;
+    top: 5%;
+    left: 25%;
+    text-align: center;
+}
+
+hr#root-book-horizon {
+    width: 50%;
+    top: 20%;
+    left: 40%;
+}
+
+div#root-book-explain {
+    width: 40%;
+    height: 70%;
+    font-size: 20px;
+    top: 30%;
+    left: 45%;
+    overflow-y: auto;
+}
+
+/* ナビゲーション*/
+
+div#root-navigation {
+    width: 100%;
+    height: 30%;
+    bottom: 0px;
+}
+
+img#root-navigation-book1 {
+    left: 15%;
+}
+
+img#root-navigation-book2 {
+    left: 30%;
+}
+
+img#root-navigation-book3 {
+    left: 45%;
+}
+
+img#root-navigation-book4 {
+    left: 60%;
+}
+
+img#root-navigation-book5 {
+    left: 75%;
+}
+
+img.root-navigation-book {
+    width: auto;
+    height: 80%;
+    top: 10%;
+    cursor: pointer;
+}
+
+img#root-navigation-leftArrow {
+    left: 50px;
+}
+
+img#root-navigation-rightArrow {
+    right: 50px;
+}
+
+img.root-navigation-arrow {
+    width: auto;
+    height: 50%;
+    top: 60px;
+    cursor: pointer;
+}
