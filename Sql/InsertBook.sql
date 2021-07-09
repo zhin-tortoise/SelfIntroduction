@@ -9,7 +9,7 @@ insert into book values (
     マネジメントや経営戦略についても学習することでき、内容は浅いが幅広く学ぶことができた。
     この本を読むまでは情報のことを全く知らなかったが、この本を読んでからなんとなく情報のことを理解していった。
     ',
-    '../picture/basic_qualification.jpg'
+    '../../Picture/BasicQualification.jpg'
 );
 
 insert into book values (
@@ -23,7 +23,7 @@ insert into book values (
     難しい資格で情報処理技術者試験のレベル3に位置づけられている。
     資格を取得してから月日が経っているが、この資格を取得する際に学んだ様々な知識は今現在もとても役に立っている。
     ',
-    '../picture/application_qualification.jpg'
+    '../../Picture/ApplicationQualification.jpg'
 );
 
 insert into book values (
@@ -36,7 +36,7 @@ insert into book values (
     様々な攻撃手法とその対策方法が記載されており、勉強になることが多かった。
     今現在セキュリティ分野での業務経験がないため、セキュリティの実務に詳しいわけではないが、この資格を取得するうえで様々なセキュリティの知識を身に着けることができた。
     ',
-    '../picture/security_qualification.jpg'
+    '../../Picture/SecurityQualification.jpg'
 );
 
 insert into book values (
@@ -49,7 +49,7 @@ insert into book values (
     本が薄く読みやすい内容ではあるが、Clean CodeやCode Completeなどに比べると内容が薄い。
     まだ新人の頃に読んだ書籍で今でも役立つ内容はあるが、Clean CodeやCode Completeによって同じ内容がより深く紹介おり、新人向けの参考書といった印象がある。
     ',
-    '../picture/readable_code.jpg'
+    '../../Picture/ReadableCode.jpg'
 );
 
 insert into book values (
@@ -62,7 +62,7 @@ insert into book values (
     PHPでのセキュリティ対策についても紹介されており、SQLインジェクションなどの攻撃手法と対応策が掲載されている。
     SQLインジェクションの対策ではプリペアドステートメントを使用して対策することなど、PHPのセキュリティ対策についても学ぶことができた。
     ',
-    '../picture/php.jpg'
+    '../../Picture/Php.jpg'
 );
 
 insert into book values (
@@ -74,7 +74,7 @@ insert into book values (
     javascriptでのDOMの操作方法や組み立て方、モジュール化の方法を学ぶことができ、これらの学んだことはこの自己紹介webサイトの構築に活かされている。
     この本でjavascript側でDOMを組み立てる設計方法を知り、PHP側だけでなくjavascript側でDOMを管理できることを知り、設計手法に幅を持つことができた。
     ',
-    '../picture/single_page_web_application.jpg'
+    '../../Picture/SinglePageWebApplication.jpg'
 );
 
 insert into book values (
@@ -87,7 +87,7 @@ insert into book values (
     この本を読んでから、自分のソースコードを読み直してリファクタリングを行う習慣が身についた。
     簡単なリファクタリングの内、メソッド名の変更、説明用変数の導入、ポリモーフィズムによる条件記述の置き換えなどを実際に行ったことがある。
     様々なリファクタリング手法が記載されているため、普段はリファクタリングのリファレンス本として使用している。',
-    '../picture/refactoring.jpg'
+    '../../Picture/Refactoring.jpg'
 );
 
 insert into book values (
@@ -99,7 +99,7 @@ insert into book values (
     その他にも、セカンドシステム症候群などプロジェクトマネジメントの様々なことについて記載されているが、自分の担当しているソフトウェア開発には直接的に役立つ知識ではなかった。
     しかし、プロジェクトマネジメントについて記載されたこの本を読んだことで、開発者としての新しい分野の知識が深まり、ソフトウェア開発者として幅が広がった。
     ',
-    '../picture/the_mythical_man_month.jpg'
+    '../../Picture/TheMythicalManMonth.jpg'
 );
 
 insert into book values (
@@ -113,7 +113,7 @@ insert into book values (
     DRY原則はソフトウェア開発の基本であり、重複を削除するという原則だが、この原則はできる限り守って開発を行うようにしている。
     この本を読んでから、簡単な作業はバッチ化して自動化するようになった。開発したバッチはバージョン管理に登録し変更管理も行えるようにしている。
     ',
-    '../picture/the_pragmatic_programmer.jpg'
+    '../../Picture/ThePragmaticProgrammer.jpg'
 );
 
 insert into book values (
@@ -127,7 +127,7 @@ insert into book values (
     解決領域ではそれぞれのサブドメインを、アプリケーション、エンティティ、バリューオブジェクト、リポジトリなど使用して設計を行う。
     業務ではこの手法を試したことがないため、機会があれば試してみたいと考えている。
     ',
-    '../picture/domain_driven.jpg'
+    '../../Picture/DomainDriven.jpg'
 );
 
 insert into book values (
@@ -140,7 +140,7 @@ insert into book values (
     失敗することを恐れるなのメッセージは強く印象に残っており、勉強し続けることや、プログラムを書き続けることのモチベーションの一つになっている。
     また、おすすめの参考書が記載されており、人を動かす、Code Complete、Clean Codeなどが紹介されている。この本の勧めにより人を動かすを読むことにした。
     ',
-    '../picture/softskills.jpg'
+    '../../Picture/Softskills.jpg'
 );
 
 insert into book values (
@@ -153,7 +153,7 @@ insert into book values (
     ドメインを知るは、自分がプログラムを書く対象領域の業務について知るということであり、これまでプロジェクトごとにドメインが異なることが多く、この本を読んでからできるだけ早く業務についても学ぶようになった。
     他にもコードの共同所有などが記載されており、作成したプログラムは個人で所有するのではなく、チームで所有されたほうがいいことなどが記載されており、この本を読んでからコードはチームで所有するものという認識になった。
     ',
-    '../picture/clean_coder.jpg'
+    '../../Picture/CleanCoder.jpg'
 );
 
 insert into book values (
@@ -167,7 +167,7 @@ insert into book values (
     オブジェクトとデータ構造では、オブジェクト指向と手続き型の特性について記載されており、データ構造が追加されることが多い場合にはオブジェクト指向が適しており、関数が追加されることが多い場合には手続き型が適していることが記載されている。
     この本を読むまではオブジェクト指向の方が優れていると考えていたが、状況によってどちらが優れているかは異なることがわかり、オブジェクト指向と手続き型を使い分けるようになった。
     ',
-    '../picture/clean_code.jpg'
+    '../../Picture/CleanCode.jpg'
 );
 
 insert into book values (
@@ -180,7 +180,7 @@ insert into book values (
     人を説得する原則には、議論を避ける、穏やかに話すなどがあり、これらを読んでから自分の話し方を穏やかで受動的なものへと変えた。
     演出の重要性についても記載があった。これまで演出について考えたことがなかったため、新鮮な視点をもたらしてくれた。
     ',
-    '../picture/move_people.jpg'
+    '../../Picture/MovePeople.jpg'
 );
 
 insert into book values (
@@ -195,7 +195,7 @@ insert into book values (
     XPの12のプラクティスについて解説されており、特にテクニカルプラクティスの比重が多い。
     テスト駆動開発、リファクタリング、シンプルな設計、ペアプログラミングがテクニカルプラクティスの中に入っており、これらの技術が1つの枠組みの中にあることがこの本を読んでわかった。
     ',
-    '../picture/clean_agile.jpg'
+    '../../Picture/CleanAgile.jpg'
 );
 
 insert into book values (
@@ -209,7 +209,7 @@ insert into book values (
     しかし、全体的にHASKELLは難しく、またモナドを理解することができず、HASKELLでアプリケーションが書けるようにはならなかった。
     純粋関数型言語の考え方を学ぶことができ、型や型クラス、関数でプログラムを組み立てる経験を得ることができよかった。再帰や高階関数も改めて学ぶことができた。
     ',
-    '../picture/haskell.jpg'
+    '../../Picture/Haskell.jpg'
 );
 
 insert into book values (
@@ -224,7 +224,7 @@ insert into book values (
     最後にリファクタリングでは、グリーンにするために発生した重複を削除する。
     この手法を使用して開発した実務経験はないが、色々な書籍でこの開発手法が進められているため、この手法で開発してみたいと考えている。
     ',
-    '../picture/test_driven.jpg'
+    '../../Picture/TestDriven.jpg'
 );
 
 insert into book values (
@@ -238,7 +238,7 @@ insert into book values (
     パフォーマンスよりもまず保守性を優先し、後からパフォーマンスを測定してプログラムを改修するほうがいいことを知った。
     コメントのレイアウトでも保守性が優先されることを知り、見栄えよりも保守性を優先するようになった。
     ',
-    '../picture/code_complete.jpg'
+    '../../Picture/CodeComplete.jpg'
 );
 
 insert into book values (
@@ -246,5 +246,5 @@ insert into book values (
     2,
     'テスト用',
     'テスト用です。',
-    '../picture/basic_qualification.jpg'
+    '../../Picture/BasicQualification.jpg'
 )

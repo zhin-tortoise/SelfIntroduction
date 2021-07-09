@@ -1,4 +1,4 @@
-insert into job_change values (
+insert into jobChange values (
     null,
     1,
     '“]E‚µ‚æ‚¤‚Æ‚µ‚½——R‚ÍA‰ïĞ‚É‚¢‚Ä‚àæ‚ª‚È‚¢‚ÆŠ´‚¶‚½‚©‚ç‚Å‚·B
