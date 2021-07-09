@@ -77,6 +77,10 @@ class JobChangeApi
      */
     public function updateJobChange($post)
     {
+        if (!array_key_exists('id', $post)) {
+            return ['errorCode' => '99999'];
+        }
+
         return $this->jobChangeApplication->updateJobChange($post);
     }
 

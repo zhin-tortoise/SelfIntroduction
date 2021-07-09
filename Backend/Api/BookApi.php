@@ -81,6 +81,10 @@ class BookApi
      */
     public function updateBook($post)
     {
+        if (!array_key_exists('id', $post)) {
+            return ['errorCode' => '99999'];
+        }
+
         return $this->bookApplication->updateBook($post);
     }
 

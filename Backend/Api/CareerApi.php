@@ -82,6 +82,10 @@ class CareerApi
      */
     public function updateCareer($post)
     {
+        if (!array_key_exists('id', $post)) {
+            return ['errorCode' => '99999'];
+        }
+
         return $this->careerApplication->updateCareer($post);
     }
 
