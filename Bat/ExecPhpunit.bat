@@ -20,3 +20,8 @@ REM 書籍のテスト
 php C:/php/phpunit.phar Backend/Test/TestBookEntity.php
 php C:/php/phpunit.phar Backend/Test/TestBookRepository.php
 php C:/php/phpunit.phar Backend/Test/TestBookApplication.php
+
+REM 管理者のテスト
+php C:/php/phpunit.phar Backend/Test/TestAdminEntity.php
+php C:/php/phpunit.phar Backend/Test/TestAdminRepository.php
+php C:/php/phpunit.phar Backend/Test/TestAdminApplication.php
