@@ -1,0 +1,28 @@
+div#root-menu {
+    width: 100%;
+    height: 10%;
+    top: 5%;
+}
+
+div#root-menu-user {
+    left: 10%;
+}
+
+div#root-menu-job_change {
+    left: 20%;
+}
+
+div#root-menu-career {
+    left: 30%;
+}
+
+div#root-menu-book {
+    left: 40%;
+}
+
+div#root-menu-user,
+div#root-menu-job_change,
+div#root-menu-career,
+div#root-menu-book {
+    cursor: pointer;
+}

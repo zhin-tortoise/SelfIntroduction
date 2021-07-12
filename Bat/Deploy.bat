@@ -35,3 +35,15 @@ copy .\Frontend\SelfIntroduction\Css\* %SELFINTRODUCTION_CSS_PATH%
 set SELFINTRODUCTION_JS_PATH=D:\Apache24\htdocs\Frontend\SelfIntroduction\Js
 if not exist %SELFINTRODUCTION_JS_PATH% mkdir %SELFINTRODUCTION_JS_PATH%
 copy .\Frontend\SelfIntroduction\Js\* %SELFINTRODUCTION_JS_PATH%
+
+set MANAGEMENT_PATH=D:\Apache24\htdocs\Frontend\Management
+if not exist %MANAGEMENT_PATH% mkdir %MANAGEMENT_PATH%
+copy .\Frontend\Management\* %MANAGEMENT_PATH%
+
+set MANAGEMENT_CSS_PATH=D:\Apache24\htdocs\Frontend\Management\Css
+if not exist %MANAGEMENT_CSS_PATH% mkdir %MANAGEMENT_CSS_PATH%
+copy .\Frontend\Management\Css\* %MANAGEMENT_CSS_PATH%
+
+set MANAGEMENT_JS_PATH=D:\Apache24\htdocs\Frontend\Management\JS
+if not exist %MANAGEMENT_JS_PATH% mkdir %MANAGEMENT_JS_PATH%
+copy .\Frontend\Management\Js\* %MANAGEMENT_JS_PATH%
