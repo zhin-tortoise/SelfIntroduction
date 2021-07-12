@@ -1,0 +1,90 @@
+/* テーブル */
+div#root-user,
+div#root-job_change,
+div#root-career,
+div#root-book {
+    width: 90%;
+    height: 80%;
+    top: 15%;
+    left: 5%;
+    overflow-y: auto;
+    display: none;
+}
+
+table#root-user-table *,
+table#root-job_change-table *,
+table#root-career-table *,
+table#root-book-table * {
+    font-size: 16px;
+    position: static;
+    border: 1px white solid;
+    text-align: center;
+}
+
+/* ユーザーテーブルのみデフォルトだと見づらいため、幅を指定する。 */
+table#root-user-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+th#root-user-table-header-create,
+th#root-user-table-header-update,
+th#root-user-table-header-delete {
+    width: 2%;
+}
+
+th#root-user-table-header-id {
+    width: 2%;
+}
+
+th#root-user-table-header-name {
+    width: 6%;
+}
+
+th#root-user-table-header-mail {
+    width: 8%;
+}
+
+th#root-user-table-header-password {
+    width: 9%;
+}
+
+th#root-user-table-header-picture {
+    width: 7%;
+}
+
+th#root-user-table-header-birthday {
+    width: 8%;
+}
+
+th#root-user-table-header-gender {
+    width: 4%;
+}
+
+th#root-user-table-header-background {
+    width: 15%;
+}
+
+th#root-user-table-header-qualification {
+    width: 10%;
+}
+
+th#root-user-table-header-profile {
+    width: 25%;
+}
+
+/* ボタン */
+td#root-user-table-create,
+td.root-user-table-update,
+td.root-user-table-delete,
+td#root-job_change-table-create,
+td.root-job_change-table-update,
+td.root-job_change-table-delete,
+td#root-career-table-create,
+td.root-career-table-update,
+td.root-career-table-delete,
+td#root-book-table-create,
+td.root-book-table-update,
+td.root-book-table-delete {
+    cursor: pointer;
+}
