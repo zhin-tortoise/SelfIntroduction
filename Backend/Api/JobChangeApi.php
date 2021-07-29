@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['type'] === 'create') {
 
 class JobChangeApi
 {
-    private JobChangeApplication $jobChangeApplication; // 転職事由アプリケーション
+    private $jobChangeApplication; // 転職事由アプリケーション
 
     /**
      * 転職事由アプリケーションを用意する。
