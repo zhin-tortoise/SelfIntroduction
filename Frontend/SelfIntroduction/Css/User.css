@@ -12,7 +12,7 @@ img#root-user-picture {
 }
 
 div#root-user-name {
-    font-size: 50px;
+    font-size: 7vh;
     top: 10%;
     left: 30%;
 }
@@ -41,7 +41,7 @@ div#root-user-navigation {
 
 div#root-user-navigation-background {
     left: 15%;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
 }
 
@@ -51,7 +51,7 @@ div#root-user-navigation-background:hover {
 
 div#root-user-navigation-qualification {
     left: 40%;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
 }
 
@@ -61,7 +61,7 @@ div#root-user-navigation-qualification:hover {
 
 div#root-user-navigation-profile {
     left: 60%;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
 }
 
@@ -80,6 +80,6 @@ div.root-user-detail {
     height: 40%;
     top: 50%;
     left: 30%;
-    font-size: 20px;
+    font-size: 3vh;
     overflow-y: auto;
 }

@@ -11,9 +11,8 @@ div#root-menu-user {
     top: 0;
     left: 0;
     text-align: center;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
-    padding-top: 5%;
 }
 
 div#root-menu-user:hover {
@@ -26,9 +25,8 @@ div#root-menu-job_change {
     top: 25%;
     left: 0;
     text-align: center;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
-    padding-top: 5%;
 }
 
 div#root-menu-job_change:hover {
@@ -41,9 +39,8 @@ div#root-menu-career {
     top: 50%;
     left: 0;
     text-align: center;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
-    padding-top: 5%;
 }
 
 div#root-menu-career:hover {
@@ -56,9 +53,8 @@ div#root-menu-book {
     top: 75%;
     left: 0;
     text-align: center;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
-    padding-top: 5%;
 }
 
 div#root-menu-book:hover {

@@ -12,7 +12,7 @@ div#root-job_change-navigation {
 
 div#root-job_change-navigation-reason {
     left: 0%;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
 }
 
@@ -22,7 +22,7 @@ div#root-job_change-navigation-reason:hover {
 
 div#root-job_change-navigation-motivation {
     left: 20%;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
 }
 
@@ -32,7 +32,7 @@ div#root-job_change-navigation-motivation:hover {
 
 div#root-job_change-navigation-experience {
     left: 40%;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
 }
 
@@ -51,6 +51,6 @@ div.root-job_change-detail {
     height: 60%;
     top: 30%;
     left: 10%;
-    font-size: 20px;
+    font-size: 3vh;
     overflow-y: auto;
 }
