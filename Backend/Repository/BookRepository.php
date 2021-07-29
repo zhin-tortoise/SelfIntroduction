@@ -10,7 +10,7 @@ require_once(dirname(__FILE__) . '/../Domain/BookEntity.php');
 
 class BookRepository implements IBookRepository
 {
-    private PDO $pdo; // DBアクセスを行うPDOクラス。
+    private $pdo; // DBアクセスを行うPDOクラス。
 
     /**
      * コンストラクタでPDOを設定する。

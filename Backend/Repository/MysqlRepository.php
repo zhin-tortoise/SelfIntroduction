@@ -8,7 +8,7 @@ class Mysql
 {
     // const ENVIRONMENT = 'production'; // 商用環境で使用する際に使用する変数。
     const ENVIRONMENT = 'develop'; // 開発環境で使用する際に使用する変数。
-    private PDO $pdo; // DBアクセスを行うPDOクラス。
+    private $pdo; // DBアクセスを行うPDOクラス。
 
     /**
      * コンストラクタでPDOの作成を行う。

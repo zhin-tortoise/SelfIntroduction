@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['type'] === 'create') {
 
 class BookApi
 {
-    private BookApplication $bookApplication; // 書籍アプリケーション
+    private $bookApplication; // 書籍アプリケーション
 
     /**
      * 書籍アプリケーションを用意する。

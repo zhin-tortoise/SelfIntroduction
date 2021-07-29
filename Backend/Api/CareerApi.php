@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['type'] === 'create') {
 
 class CareerApi
 {
-    private CareerApplication $careerApplication; // 経歴アプリケーション
+    private $careerApplication; // 経歴アプリケーション
 
     /**
      * 経歴アプリケーションを用意する。

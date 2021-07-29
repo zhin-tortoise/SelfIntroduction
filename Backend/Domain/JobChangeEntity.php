@@ -6,11 +6,11 @@
 
 class JobChangeEntity
 {
-    private $id; // 転職ID。nullを許容するため、intの型宣言はなし。
-    private int $userId; // ユーザーID。
-    private string $reason; // 転職理由。
-    private string $motivation; // 志望動機。
-    private string $experience; // 活かせる経験。
+    private $id; // 転職ID。
+    private $userId; // ユーザーID。
+    private $reason; // 転職理由。
+    private $motivation; // 志望動機。
+    private $experience; // 活かせる経験。
 
     /**
      * 引数で与えられた配列の各要素をプロパティに設定する。

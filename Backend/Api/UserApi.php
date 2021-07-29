@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['type'] === 'create') {
 
 class UserApi
 {
-    private UserApplication $userApplication; // ユーザーアプリケーション
+    private $userApplication; // ユーザーアプリケーション
 
     /**
      * ユーザーアプリケーションを用意する。

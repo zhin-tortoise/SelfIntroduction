@@ -6,9 +6,9 @@
 
 class AdminEntity
 {
-    private $id; // 管理者ID。nullを許容するため、intの型宣言はなし。
-    private string $mail; // メールアドレス。
-    private string $password; // パスワード。
+    private $id; // 管理者ID。
+    private $mail; // メールアドレス。
+    private $password; // パスワード。
 
     /**
      * 引数で与えられた配列の各要素をプロパティに設定する。

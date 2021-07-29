@@ -6,16 +6,16 @@
 
 class UserEntity
 {
-    private $id; // ユーザーID。nullを許容するため、intの型宣言はなし。
-    private string $name; // ユーザー名
-    private string $mail; // メールアドレス
-    private string $password; // パスワード
-    private string $picture; // 写真
-    private $birthday; // 誕生日。nullを許容するため、stringの型宣言はなし。nullを許容する理由はnullでのinsertに対応するため。
-    private string $gender; // 性別
-    private string $background; // 経歴
-    private string $qualification; // 資格
-    private string $profile; // プロフィール
+    private $id; // ユーザーID
+    private $name; // ユーザー名
+    private $mail; // メールアドレス
+    private $password; // パスワード
+    private $picture; // 写真
+    private $birthday; // 誕生日
+    private $gender; // 性別
+    private $background; // 経歴
+    private $qualification; // 資格
+    private $profile; // プロフィール
 
     /**
      * 引数で与えられた配列の各要素をプロパティに設定する。

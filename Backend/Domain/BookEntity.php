@@ -6,11 +6,11 @@
 
 class BookEntity
 {
-    private $id; // 書籍ID。nullを許容するため、intの型宣言はなし。
-    private int $userId; // ユーザーID。
-    private string $title; // 題名。
-    private string $explainText; // 説明。
-    private string $picture; // 写真。
+    private $id; // 書籍ID。
+    private $userId; // ユーザーID。
+    private $title; // 題名。
+    private $explainText; // 説明。
+    private $picture; // 写真。
 
     /**
      * 引数で与えられた配列の各要素をプロパティに設定する。

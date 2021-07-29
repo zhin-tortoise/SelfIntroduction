@@ -6,12 +6,12 @@
  */
 
 require_once(dirname(__FILE__) . '/IUserRepository.php');
-require_once(dirname(__FILE__) . '/../domain/UserEntity.php');
+require_once(dirname(__FILE__) . '/../Domain/UserEntity.php');
 
 class UserRepository implements IUserRepository
 {
     const EXISTS_MAIL_CODE = '99998'; // 存在するメールアドレスの場合のエラーコード
-    private PDO $pdo; // DBアクセスを行うPDOクラス。
+    private $pdo; // DBアクセスを行うPDOクラス。
 
     /**
      * コンストラクタでPDOを設定する。

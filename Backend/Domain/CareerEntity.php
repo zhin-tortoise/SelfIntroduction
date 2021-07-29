@@ -6,12 +6,12 @@
 
 class CareerEntity
 {
-    private $id; // 経歴ID。nullを許容するため、intの型宣言はなし。
-    private int $userId; // ユーザーID。
-    private $startDate; // 開始日。nullを許容するため、stringの型宣言はなし。
-    private $finishDate; // 終了日。nullを許容するため、stringの型宣言はなし。
-    private string $overview; // 概要。
-    private string $explainText; // 説明。
+    private $id; // 経歴ID。
+    private $userId; // ユーザーID。
+    private $startDate; // 開始日。
+    private $finishDate; // 終了日。
+    private $overview; // 概要。
+    private $explainText; // 説明。
 
     /**
      * 引数で与えられた配列の各要素をプロパティに設定する。

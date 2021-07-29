@@ -10,7 +10,7 @@ require_once(dirname(__FILE__) . '/../Domain/AdminEntity.php');
 
 class AdminRepository implements IAdminRepository
 {
-    private PDO $pdo; // DBアクセスを行うPDOクラス。
+    private $pdo; // DBアクセスを行うPDOクラス。
 
     /**
      * コンストラクタでPDOを設定する。
