@@ -68,7 +68,7 @@ insert into book values (
 insert into book values (
     null,
     1,
-    'シングルページWebアプリケーション',
+    'シングルページWeb',
     'シングルページwebアプリケーションの構築方法について記載された参考書。
     このアプリケーションはjavascriptで構築していくため、構築方法と同時にjavascriptの書き方を学ぶことができた。
     javascriptでのDOMの操作方法や組み立て方、モジュール化の方法を学ぶことができ、これらの学んだことはこの自己紹介webサイトの構築に活かされている。
