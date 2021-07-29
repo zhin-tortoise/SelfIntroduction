@@ -19,7 +19,7 @@ img#root-career-list-top_arrow {
 
 div#root-career-list-overview1 {
     top: 40%;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
 }
 
@@ -29,7 +29,7 @@ div#root-career-list-overview1:hover {
 
 div#root-career-list-overview2 {
     top: 50%;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
 }
 
@@ -39,7 +39,7 @@ div#root-career-list-overview2:hover {
 
 div#root-career-list-overview3 {
     top: 60%;
-    font-size: 20px;
+    font-size: 3vh;
     cursor: pointer;
 }
 
@@ -63,12 +63,12 @@ div#root-career-detail {
 
 div#root-career-detail-overview {
     top: 10%;
-    font-size: 40px;
+    font-size: 6vh;
 }
 
 div#root-career-detail-date {
     top: 25%;
-    font-size: 20px;
+    font-size: 3vh;
 }
 
 hr#root-career-detail-horizon {
@@ -80,6 +80,6 @@ hr#root-career-detail-horizon {
 div#root-career-detail-explain {
     height: 50%;
     top: 40%;
-    font-size: 20px;
+    font-size: 3vh;
     overflow-y: auto;
 }

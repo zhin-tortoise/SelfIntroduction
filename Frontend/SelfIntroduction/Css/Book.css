@@ -15,7 +15,7 @@ img#root-book-picture {
 
 div#root-book-title {
     width: 80%;
-    font-size: 36px;
+    font-size: 6vh;
     top: 5%;
     left: 25%;
     text-align: center;
@@ -30,7 +30,7 @@ hr#root-book-horizon {
 div#root-book-explain {
     width: 40%;
     height: 70%;
-    font-size: 20px;
+    font-size: 3vh;
     top: 30%;
     left: 45%;
     overflow-y: auto;

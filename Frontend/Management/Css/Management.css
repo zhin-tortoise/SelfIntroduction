@@ -15,7 +15,7 @@ table#root-user-table *,
 table#root-job_change-table *,
 table#root-career-table *,
 table#root-book-table * {
-    font-size: 16px;
+    font-size: 2vh;
     position: static;
     border: 1px white solid;
     text-align: center;
