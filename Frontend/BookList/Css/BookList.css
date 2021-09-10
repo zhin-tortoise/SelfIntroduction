@@ -1,0 +1,82 @@
+ul#root-book {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+ul#root-book * {
+    position: static;
+    list-style-type: none;
+}
+
+li.root-book-row {
+    width: 12.5%;
+    height: auto;
+    padding: 0;
+    display: inline-block;
+}
+
+img.root-book-row-picture {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    cursor: pointer;
+}
+
+p.root-book-row-title {
+    display: none;
+}
+
+p.root-book-row-explain {
+    display: none;
+}
+
+div#root-detail {
+    width: 80%;
+    height: 100%;
+    top: 0;
+    left: 10%;
+    border: 1px white solid;
+}
+
+div#root-detail-background {
+    width: 100%;
+    height: 100%;
+    background-color: brown;
+    opacity: 0.8;
+}
+
+img.root-detail-picture {
+    width: 30%;
+    height: auto;
+    top: 20%;
+    left: 10%;
+}
+
+p.root-detail-title {
+    width: 30%;
+    height: auto;
+    top: 10%;
+    left: 60%;
+}
+
+p.root-detail-explainText {
+    width: 40%;
+    height: 60%;
+    top: 30%;
+    left: 55%;
+    overflow-y: auto;
+}
+
+div.root-detail-cancel {
+    width: 50;
+    height: 50px;
+    top: 10px;
+    right: 10px;
+    border: 1px white solid;
+}
