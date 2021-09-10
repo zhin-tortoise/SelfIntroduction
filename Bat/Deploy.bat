@@ -47,3 +47,15 @@ copy .\Frontend\Management\Css\* %MANAGEMENT_CSS_PATH%
 set MANAGEMENT_JS_PATH=D:\Apache24\htdocs\selfIntroduction\Frontend\Management\JS
 if not exist %MANAGEMENT_JS_PATH% mkdir %MANAGEMENT_JS_PATH%
 copy .\Frontend\Management\Js\* %MANAGEMENT_JS_PATH%
+
+set BOOK_LIST_PATH=D:\Apache24\htdocs\selfIntroduction\Frontend\BookList
+if not exist %BOOK_LIST_PATH% mkdir %BOOK_LIST_PATH%
+copy .\Frontend\BookList\* %BOOK_LIST_PATH%
+
+set BOOK_LIST_CSS_PATH=D:\Apache24\htdocs\selfIntroduction\Frontend\BookList\Css
+if not exist %BOOK_LIST_CSS_PATH% mkdir %BOOK_LIST_CSS_PATH%
+copy .\Frontend\BookList\Css\* %BOOK_LIST_CSS_PATH%
+
+set BOOK_LIST_JS_PATH=D:\Apache24\htdocs\selfIntroduction\Frontend\BookList\JS
+if not exist %BOOK_LIST_JS_PATH% mkdir %BOOK_LIST_JS_PATH%
+copy .\Frontend\BookList\Js\* %BOOK_LIST_JS_PATH%
